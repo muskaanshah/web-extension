@@ -8,7 +8,7 @@ function InitialLanding() {
 				<p className="fw-600 nametag mb-1">Hello, what's your name?</p>
 				<input type="text" className="fw-500 input-text name-text" />
 				<Link to="/landing" className="btn bg-white borderradius-2">
-					Continue ›
+					<span>Continue ›</span>
 				</Link>
 			</div>
 		</div>
