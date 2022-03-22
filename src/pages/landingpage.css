@@ -1,0 +1,82 @@
+.landingimage {
+	height: 100vh;
+	background: url("../assets/wallpaper.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.overlay-wrapper {
+	position: relative;
+}
+
+.overlay {
+	position: absolute;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: var(--white);
+}
+
+.nametag {
+	font-size: 3.5rem;
+}
+
+.focustag {
+	font-size: 2rem;
+}
+
+.name-text {
+	width: 500px;
+	padding: 0.5rem 1rem;
+	margin-bottom: 3rem;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	border-bottom: 3px solid var(--white);
+	font-size: 2.5rem;
+	color: var(--white);
+	text-align: center;
+	font-family: "Spartan", sans-serif;
+}
+
+.focus-text {
+	font-size: 1.5rem;
+}
+
+.time-display {
+	font-size: 8rem;
+}
+
+.todotag-bottom-right {
+	position: absolute;
+	right: 1rem;
+	bottom: 0;
+}
+
+.weather-top-right {
+	position: absolute;
+	right: 1rem;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.quote-bottom-center {
+	position: absolute;
+	bottom: 0;
+}
+
+.todo-bottom-right {
+	position: absolute;
+	right: 1rem;
+	bottom: 3rem;
+}
