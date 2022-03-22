@@ -2,7 +2,7 @@ import "./todo.css";
 
 function Todo() {
 	return (
-		<div className="todo">
+		<div className="todo borderradius-1">
 			<p className="date-tag fs-1-25 pl-1">Today</p>
 			<div className="todo-content">
 				<p className="fs-0-9">No todos yet</p>
