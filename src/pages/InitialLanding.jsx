@@ -6,7 +6,7 @@ function InitialLanding() {
 		<div className="landingimage overlay-wrapper">
 			<div className="overlay">
 				<p className="fw-600 nametag mb-1">Hello, what's your name?</p>
-				<input type="text" className="fw-500 input-text" />
+				<input type="text" className="fw-500 input-text name-text" />
 				<Link to="/landing">
 					<button className="btn bg-white borderradius-2">Continue ›</button>
 				</Link>
