@@ -40,10 +40,6 @@ function Landing() {
 				<p className="fw-600 nametag mt-0 mb-0-5">
 					Good evening, {state.userName}
 				</p>
-				<p className="fw-500 focustag my-0">
-					What's your main focus for today?
-				</p>
-
 				{state.focusFinal && !state.edit ? (
 					<>
 						<p className="fw-500 mt-2">TODAY</p>
@@ -95,17 +91,22 @@ function Landing() {
 						</p>
 					</>
 				) : (
-					<input
-						type="text"
-						className="fw-500 name-text focus-text"
-						value={state.edit ? localStorage.getItem("Focus") : state.focus}
-						onChange={(e) => onChangeHandler(e)}
-						onKeyPress={(e) => {
-							if (e.key === "Enter") {
-								inputFocusHandler(e);
-							}
-						}}
-					/>
+					<>
+						<p className="fw-500 focustag my-0">
+							What's your main focus for today?
+						</p>
+						<input
+							type="text"
+							className="fw-500 name-text focus-text"
+							value={state.edit ? localStorage.getItem("Focus") : state.focus}
+							onChange={(e) => onChangeHandler(e)}
+							onKeyPress={(e) => {
+								if (e.key === "Enter") {
+									inputFocusHandler(e);
+								}
+							}}
+						/>
+					</>
 				)}
 				<p className="todotag-bottom-right">Todo</p>
 				<div className="weather-top-right">
