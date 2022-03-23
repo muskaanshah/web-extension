@@ -92,7 +92,6 @@
 	height: 1.15rem;
 	border: 0.15rem solid currentColor;
 	border-radius: 0.15rem;
-	transform: translateY(-0.1rem);
 	display: inline-grid;
 	place-content: center;
 }
@@ -120,16 +119,24 @@ input:-webkit-autofill:active {
 	-webkit-text-fill-color: var(--white);
 }
 
-.btn-edit {
+.btn-focusaction {
 	background-color: transparent;
 	color: inherit;
-	width: 2.5rem;
+	width: 2.3rem;
 	aspect-ratio: 1;
 	border: none;
-	transform: translateY(0.3rem);
 }
 
-.btn-edit:hover {
+.btn-focusaction:hover {
 	background-color: rgba(161, 161, 161, 0.3);
 	border-radius: 50%;
+}
+
+.btn-focusaction .smaller-icon {
+	font-size: 1.25rem;
+}
+
+.label-focus {
+	display: flex;
+	align-items: center;
 }
