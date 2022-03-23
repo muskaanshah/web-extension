@@ -3,14 +3,14 @@ import "./landingpage.css";
 import { useEffect, useReducer } from "react";
 import { reducerFunc } from "../reducers/landingPageReducer";
 
+const initialState = {
+	userName: "",
+	focusFinal: "",
+	focus: "",
+	todoCompleted: false,
+	edit: false,
+};
 function Landing() {
-	const initialState = {
-		userName: "",
-		focusFinal: "",
-		focus: "",
-		todoCompleted: false,
-		edit: false,
-	};
 	const [state, dispatch] = useReducer(reducerFunc, initialState);
 
 	useEffect(() => {
@@ -101,9 +101,7 @@ function Landing() {
 							value={state.edit ? localStorage.getItem("Focus") : state.focus}
 							onChange={(e) => onChangeHandler(e)}
 							onKeyPress={(e) => {
-								if (e.key === "Enter") {
-									inputFocusHandler(e);
-								}
+								e.key === "Enter" && inputFocusHandler(e);
 							}}
 						/>
 					</>
