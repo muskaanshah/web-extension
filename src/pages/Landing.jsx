@@ -21,15 +21,13 @@ function Landing() {
 	}`;
 	const time12 = `${today.getHours()}:${today.getMinutes()}`;
 	useEffect(() => {
-		setInterval(() => {
-			setDate(() => new Date());
-		}, 1000);
-	}, []);
-	useEffect(() => {
 		const user = localStorage.getItem("name");
 		dispatch({ type: "SET_USERNAME", payload: { value: user } });
 		const focus = localStorage.getItem("Focus");
 		dispatch({ type: "SET_FINAL_FOCUS", payload: { value: focus } });
+		setInterval(() => {
+			setDate(() => new Date());
+		}, 1000);
 	}, []);
 	return (
 		<div className="landingimage overlay-wrapper">
