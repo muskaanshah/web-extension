@@ -13,9 +13,10 @@ function TodoCheckbox({ dispatch, curTodo }) {
 				}
 			/>
 			<span
-				className="mx-1 fw-300"
+				className="mx-1 fw-300 fs-0-9"
 				style={{
 					textDecoration: curTodo.todoCompleted && "line-through",
+					textAlign: "left",
 				}}
 			>
 				{curTodo.todoName}
