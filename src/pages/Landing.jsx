@@ -1,7 +1,8 @@
 import { Todo } from "../components/Todo/Todo";
 import "./landingpage.css";
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { reducerFunc } from "../reducers/landingPageReducer";
+import { Focus } from "../components/Focus/Focus";
 
 const initialState = {
 	userName: "",
@@ -10,9 +11,20 @@ const initialState = {
 	todoCompleted: false,
 	edit: false,
 };
+
 function Landing() {
 	const [state, dispatch] = useReducer(reducerFunc, initialState);
-
+	const [today, setDate] = useState(new Date());
+	const hour = today.getHours();
+	const wish = `Good ${
+		(hour < 12 && "morning") || (hour < 17 && "afternoon") || "evening"
+	}`;
+	const time12 = `${today.getHours()}:${today.getMinutes()}`;
+	useEffect(() => {
+		setInterval(() => {
+			setDate(() => new Date());
+		}, 1000);
+	}, []);
 	useEffect(() => {
 		const user = localStorage.getItem("name");
 		dispatch({ type: "SET_USERNAME", payload: { value: user } });
@@ -36,10 +48,11 @@ function Landing() {
 	return (
 		<div className="landingimage overlay-wrapper">
 			<div className="overlay">
-				<p className="time-display fw-500 mb-0">11:08</p>
+				<p className="time-display fw-500 mb-0">{time12}</p>;
 				<p className="fw-600 nametag mt-0 mb-0-5">
-					Good evening, {state.userName}
+					{wish}, {state.userName}
 				</p>
+				<Focus state={state} dispatch={dispatch} />
 				{state.focusFinal && !state.edit ? (
 					<>
 						<p className="fw-500 mt-2">TODAY</p>
