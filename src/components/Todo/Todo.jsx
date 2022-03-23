@@ -32,7 +32,7 @@ function Todo() {
 		<div>
 			{state.createTodo || state.todo.length !== 0 ? (
 				<>
-					{state.todo.length != 0 ? (
+					{state.todo.length !== 0 ? (
 						<div className="todo-list pb-3 pl-1">
 							<p className="date-tag fs-1-25 pl-1">Today</p>
 							{state.todo.map((curTodo) => (
