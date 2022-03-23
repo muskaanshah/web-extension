@@ -98,7 +98,7 @@ function Landing() {
 					<input
 						type="text"
 						className="fw-500 name-text focus-text"
-						value={state.focus}
+						value={state.edit ? localStorage.getItem("Focus") : state.focus}
 						onChange={(e) => onChangeHandler(e)}
 						onKeyPress={(e) => {
 							if (e.key === "Enter") {
