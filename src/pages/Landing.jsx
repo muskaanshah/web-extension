@@ -17,13 +17,15 @@ function Landing() {
 	const [today, setDate] = useState(new Date());
 	const [is24HourFormat, setTo24HourFormat] = useState(true);
 	const hour = today.getHours();
+	const minute = today.getMinutes();
+	const minutes = minute / 10 < 1 ? `0 ${minute}` : minute;
 	const wish = `Good ${
 		(hour < 12 && "morning") || (hour < 16 && "afternoon") || "evening"
 	}`;
-	const time24 = `${today.getHours()}:${today.getMinutes()}`;
-	const AmOrPm = hour >= 12 ? "PM" : "AM";
+	const time24 = `${hour}:${minutes}`;
+	// const AmOrPm = hour >= 12 ? "PM" : "AM";
 	const hours = hour % 12 || 12;
-	const time12 = `${hours}:${today.getMinutes()} ${AmOrPm}`;
+	const time12 = `${hours}:${minutes}`;
 	useEffect(() => {
 		const user = localStorage.getItem("name");
 		dispatch({ type: "SET_USERNAME", payload: { value: user } });

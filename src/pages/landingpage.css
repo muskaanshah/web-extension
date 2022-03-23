@@ -128,7 +128,7 @@ input:-webkit-autofill:active {
 }
 
 .btn-focusaction:hover {
-	background-color: rgba(161, 161, 161, 0.3);
+	background-color: rgba(0, 0, 0, 0.4);
 	border-radius: 50%;
 }
 
