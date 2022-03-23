@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 function Landing() {
 	const [userName, setUserName] = useState("");
 	const [focus, setFocus] = useState("");
+	const [todoCompleted, setTodoCompleted] = useState(false);
+	const [edit, setEdit] = useState(false);
 
 	useEffect(() => {
 		const user = localStorage.getItem("name");
@@ -17,7 +19,9 @@ function Landing() {
 		localStorage.setItem("Focus", e.target.value);
 		const focus = localStorage.getItem("Focus");
 		setFocus(() => focus);
+		setEdit(false);
 	};
+
 	return (
 		<div className="landingimage overlay-wrapper">
 			<div className="overlay">
@@ -27,18 +31,49 @@ function Landing() {
 					What's your main focus for today?
 				</p>
 
-				{focus ? (
+				{focus && !edit ? (
 					<>
 						<p className="fw-500 mt-2">TODAY</p>
 						<label>
-							<input type="checkbox" className="focus-checkbox" value={focus} />
-							<span className="my-0 fs-1-5 fw-600 ml-1">{focus}</span>
+							<input
+								type="checkbox"
+								className="focus-checkbox"
+								value={focus}
+								onClick={() =>
+									setTodoCompleted((todoCompleted) => !todoCompleted)
+								}
+							/>
+							<span
+								className="my-0 fs-1-5 fw-600 mx-1"
+								style={{ textDecoration: todoCompleted && "line-through" }}
+							>
+								{focus}
+							</span>
+							<button className="btn-edit">
+								<span
+									className="material-icons-outlined"
+									onClick={() => setEdit(true)}
+								>
+									edit
+								</span>
+							</button>
 						</label>
+						<p
+							className="appreciation-text"
+							style={{
+								opacity: `${todoCompleted ? "1" : "0"}`,
+								transition: "opacity 1s ease-out",
+							}}
+						>
+							Great work!
+						</p>
 					</>
 				) : (
 					<input
 						type="text"
 						className="fw-500 name-text focus-text"
+						value={focus}
+						onChange={(e) => setFocus(e.target.value)}
 						onKeyPress={(e) => {
 							if (e.key === "Enter") {
 								inputFocusHandler(e);

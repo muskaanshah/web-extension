@@ -53,6 +53,7 @@
 
 .time-display {
 	font-size: 8rem;
+	margin-top: 50px;
 }
 
 .todotag-bottom-right {
@@ -117,4 +118,18 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
 	transition: background-color 5000s ease-in-out 0s;
 	-webkit-text-fill-color: var(--white);
+}
+
+.btn-edit {
+	background-color: transparent;
+	color: inherit;
+	width: 2.5rem;
+	aspect-ratio: 1;
+	border: none;
+	transform: translateY(0.1rem);
+}
+
+.btn-edit:hover {
+	background-color: rgba(161, 161, 161, 0.3);
+	border-radius: 50%;
 }
