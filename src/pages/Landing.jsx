@@ -18,7 +18,7 @@ function Landing() {
 	const [is24HourFormat, setTo24HourFormat] = useState(true);
 	const hour = today.getHours();
 	const minute = today.getMinutes();
-	const minutes = minute / 10 < 1 ? `0 ${minute}` : minute;
+	const minutes = minute / 10 < 1 ? `0${minute}` : minute;
 	const wish = `Good ${
 		(hour < 12 && "morning") || (hour < 16 && "afternoon") || "evening"
 	}`;
