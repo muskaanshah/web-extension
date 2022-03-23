@@ -81,6 +81,36 @@
 	bottom: 3rem;
 }
 
+.focus-checkbox {
+	appearance: none;
+	background-color: transparent;
+	margin: 0;
+	font: inherit;
+	color: currentColor;
+	width: 1.15rem;
+	height: 1.15rem;
+	border: 0.15rem solid currentColor;
+	border-radius: 0.15rem;
+	transform: translateY(-0.1rem);
+	display: inline-grid;
+	place-content: center;
+}
+
+.focus-checkbox::before {
+	content: "";
+	width: 0.65rem;
+	height: 0.65rem;
+	transform: scale(0);
+	transition: 120ms transform ease-in-out;
+	box-shadow: inset 1rem 1rem var(--white);
+}
+
+.focus-checkbox:checked::before {
+	transform: scale(1);
+	transform-origin: bottom left;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

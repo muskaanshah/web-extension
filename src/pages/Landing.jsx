@@ -30,7 +30,10 @@ function Landing() {
 				{focus ? (
 					<>
 						<p className="fw-500 mt-2">TODAY</p>
-						<p className="my-0 fs-1-5 fw-600">{focus}</p>
+						<label>
+							<input type="checkbox" className="focus-checkbox" value={focus} />
+							<span className="my-0 fs-1-5 fw-600 ml-1">{focus}</span>
+						</label>
 					</>
 				) : (
 					<input
