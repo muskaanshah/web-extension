@@ -2,6 +2,7 @@ import { useEffect, useReducer } from "react";
 import "./todo.css";
 import { TodoCheckbox } from "./TodoCheckbox";
 import { todoReducer } from "../../reducers/todoreducer";
+import { TodoInput } from "./TodoInput";
 
 const initialTodoList = !localStorage.getItem("Todos")
 	? []
@@ -28,43 +29,46 @@ function Todo() {
 		dispatch({ type: "CHANGE_TODO_VALUE", payload: { value: e.target.value } });
 	};
 	return (
-		<div className="todo borderradius-0-5">
-			<p className="date-tag fs-1-25 pl-1">Today</p>
-			<div className="todo-content">
-				{state.createTodo || state.todo.length !== 0 ? (
-					<>
-						<div className="todo-list">
-							{state.todo ? (
-								state.todo.map((curTodo) => (
-									<TodoCheckbox dispatch={dispatch} curTodo={curTodo} />
-								))
-							) : (
-								<div>No todos added yet</div>
-							)}
+		<div>
+			{state.createTodo || state.todo.length !== 0 ? (
+				<>
+					{state.todo.length != 0 ? (
+						<div className="todo-list pb-3 pl-1">
+							<p className="date-tag fs-1-25 pl-1">Today</p>
+							{state.todo.map((curTodo) => (
+								<TodoCheckbox dispatch={dispatch} curTodo={curTodo} />
+							))}
+							<TodoInput
+								state={state}
+								todoInputHandler={todoInputHandler}
+								addTodo={addTodo}
+							/>
 						</div>
-						<input
-							type="text"
-							className="todo-text"
-							placeholder="New Todo"
-							value={state.newTodoValue}
-							onChange={(e) => todoInputHandler(e)}
-							onKeyPress={(e) => {
-								e.key === "Enter" && addTodo(e);
-							}}
-						/>
-					</>
-				) : (
-					<>
-						<p className="fs-0-9">No todos yet</p>
-						<button
-							className="btn btn-sm bg-grey-light borderradius-2"
-							onClick={() => dispatch({ type: "START_TODO_LIST" })}
-						>
-							Add todo
-						</button>
-					</>
-				)}
-			</div>
+					) : (
+						<div className="todo">
+							<p className="date-tag fs-1-25 pl-1">Today</p>
+							<div className="centered" style={{ height: "50%" }}>
+								<p>No todos added yet</p>
+							</div>
+							<TodoInput
+								state={state}
+								todoInputHandler={todoInputHandler}
+								addTodo={addTodo}
+							/>
+						</div>
+					)}
+				</>
+			) : (
+				<div className="todo todo-content">
+					<p className="fs-0-9">No todos yet</p>
+					<button
+						className="btn btn-sm bg-grey-light borderradius-2"
+						onClick={() => dispatch({ type: "START_TODO_LIST" })}
+					>
+						Add todo
+					</button>
+				</div>
+			)}
 		</div>
 	);
 }

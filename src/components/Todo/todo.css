@@ -6,6 +6,7 @@
 	aspect-ratio: 1;
 	display: flex;
 	flex-direction: column;
+	border-radius: 0.5rem;
 }
 
 .date-tag {
@@ -35,6 +36,11 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 5;
+	width: 250px;
+	border-radius: 0.5rem;
 }
 
 .todo-checkbox {
