@@ -26,6 +26,16 @@ function Landing() {
 	// const AmOrPm = hour >= 12 ? "PM" : "AM";
 	const hours = hour % 12 || 12;
 	const time12 = `${hours}:${minutes}`;
+	const setupTime = localStorage.getItem("setupTime");
+	if (setupTime == null) {
+		localStorage.setItem("setupTime", today);
+	} else {
+		if (today - setupTime > hours * 60 * 60 * 1000) {
+			localStorage.removeItem("Focus");
+			localStorage.removeItem("Todos");
+			localStorage.setItem("setupTime", today);
+		}
+	}
 	useEffect(() => {
 		const user = localStorage.getItem("name");
 		dispatch({ type: "SET_USERNAME", payload: { value: user } });
