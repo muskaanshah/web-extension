@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 
 function InitialLanding() {
 	const [alreadyExistingUser, setExistingUser] = useState(false);
+	const [name, setName] = useState("");
+
 	useEffect(() => {
 		const user = localStorage.getItem("name");
 		setExistingUser(user);
 	}, []);
-	const [name, setName] = useState("");
 
 	const navigate = useNavigate();
 	const inputHandler = (e) => {
