@@ -1,5 +1,5 @@
 function Focus({ state, dispatch }) {
-	const inputFocusHandler = (e) => {
+	const inputFocusHandler = () => {
 		const finalFocus = localStorage.getItem("Focus");
 		dispatch({ type: "SET_FINAL_FOCUS", payload: { value: finalFocus } });
 		dispatch({ type: "SET_EDIT", payload: { value: false } });
@@ -75,7 +75,7 @@ function Focus({ state, dispatch }) {
 						value={state.edit ? localStorage.getItem("Focus") : state.focus}
 						onChange={(e) => onChangeHandler(e)}
 						onKeyPress={(e) => {
-							e.key === "Enter" && inputFocusHandler(e);
+							e.key === "Enter" && inputFocusHandler();
 						}}
 					/>
 				</>

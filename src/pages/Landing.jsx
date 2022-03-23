@@ -46,7 +46,7 @@ function Landing() {
 						className="btn-focusaction"
 						onClick={() => setTo24HourFormat((prev) => !prev)}
 					>
-						<span class="material-icons-outlined">repeat</span>
+						<span className="material-icons-outlined">repeat</span>
 					</button>
 				</div>
 				<p className="fw-600 nametag mt-0 mb-0-5">

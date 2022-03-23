@@ -18,3 +18,21 @@
 	align-items: center;
 	justify-content: center;
 }
+
+.todo-text {
+	width: 90%;
+	padding: 0.5rem 1rem;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	color: var(--white);
+	font-family: "Spartan", sans-serif;
+	position: absolute;
+	bottom: 0.5rem;
+}
+
+.todo-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
