@@ -126,7 +126,7 @@ input:-webkit-autofill:active {
 	width: 2.5rem;
 	aspect-ratio: 1;
 	border: none;
-	transform: translateY(0.1rem);
+	transform: translateY(0.3rem);
 }
 
 .btn-edit:hover {

@@ -1,58 +1,70 @@
 import { Todo } from "../components/Todo/Todo";
 import "./landingpage.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
+import { reducerFunc } from "../reducers/landingPageReducer";
 
 function Landing() {
-	const [userName, setUserName] = useState("");
-	const [focus, setFocus] = useState("");
-	const [todoCompleted, setTodoCompleted] = useState(false);
-	const [edit, setEdit] = useState(false);
+	const initialState = {
+		userName: "",
+		focus: "",
+		todoCompleted: false,
+		edit: false,
+	};
+	const [state, dispatch] = useReducer(reducerFunc, initialState);
 
 	useEffect(() => {
 		const user = localStorage.getItem("name");
-		setUserName(() => user);
+		dispatch({ type: "SET_USERNAME", payload: { value: user } });
 		const focus = localStorage.getItem("Focus");
-		setFocus(() => focus);
+		dispatch({ type: "SET_FOCUS", payload: { value: focus } });
 	}, []);
 
 	const inputFocusHandler = (e) => {
 		localStorage.setItem("Focus", e.target.value);
 		const focus = localStorage.getItem("Focus");
-		setFocus(() => focus);
-		setEdit(false);
+		dispatch({ type: "SET_FOCUS", payload: { value: focus } });
+		dispatch({ type: "SET_EDIT", payload: { value: false } });
 	};
 
 	return (
 		<div className="landingimage overlay-wrapper">
 			<div className="overlay">
 				<p className="time-display fw-500 mb-0">11:08</p>
-				<p className="fw-600 nametag mt-0 mb-0-5">Good evening, {userName}</p>
+				<p className="fw-600 nametag mt-0 mb-0-5">
+					Good evening, {state.userName}
+				</p>
 				<p className="fw-500 focustag my-0">
 					What's your main focus for today?
 				</p>
 
-				{focus && !edit ? (
+				{state.focus && !state.edit ? (
 					<>
 						<p className="fw-500 mt-2">TODAY</p>
 						<label>
 							<input
 								type="checkbox"
 								className="focus-checkbox"
-								value={focus}
+								value={state.focus}
 								onClick={() =>
-									setTodoCompleted((todoCompleted) => !todoCompleted)
+									dispatch({
+										type: "SET_TODO_COMPLETED",
+									})
 								}
 							/>
 							<span
 								className="my-0 fs-1-5 fw-600 mx-1"
-								style={{ textDecoration: todoCompleted && "line-through" }}
+								style={{
+									textDecoration: state.todoCompleted && "line-through",
+								}}
 							>
-								{focus}
+								{state.focus}
 							</span>
 							<button className="btn-edit">
 								<span
 									className="material-icons-outlined"
-									onClick={() => setEdit(true)}
+									onClick={() =>
+										dispatch({ type: "SET_EDIT", payload: { value: true } })
+									}
 								>
 									edit
 								</span>
@@ -61,7 +73,7 @@ function Landing() {
 						<p
 							className="appreciation-text"
 							style={{
-								opacity: `${todoCompleted ? "1" : "0"}`,
+								opacity: `${state.todoCompleted ? "1" : "0"}`,
 								transition: "opacity 1s ease-out",
 							}}
 						>
@@ -72,8 +84,13 @@ function Landing() {
 					<input
 						type="text"
 						className="fw-500 name-text focus-text"
-						value={focus}
-						onChange={(e) => setFocus(e.target.value)}
+						value={state.focus}
+						onChange={(e) =>
+							dispatch({
+								type: "SET_FOCUS",
+								payload: { value: e.target.value },
+							})
+						}
 						onKeyPress={(e) => {
 							if (e.key === "Enter") {
 								inputFocusHandler(e);
