@@ -6,7 +6,6 @@ import { Focus } from "../components/Focus/Focus";
 import { Weather } from "../components/Weather/Weather";
 import { GoogleSearch } from "../components/GoogleSearch/GoogleSearch";
 import { Quote } from "../components/Quote/Quote";
-import axios from "axios";
 
 const initialState = {
 	userName: "",
