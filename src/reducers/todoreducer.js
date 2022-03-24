@@ -11,6 +11,11 @@ const todoCompletedHandler = (state, id) => {
     return { ...state, todo: temp };
 };
 
+const clearTodoHandler = (state, id) => {
+    const temp = state.todo.filter(curTodo => curTodo.id !== id);
+    return { ...state, todo: temp };
+}
+
 const todoReducer = (state, action) => {
     switch (action.type) {
         case "START_TODO_LIST":
@@ -29,6 +34,8 @@ const todoReducer = (state, action) => {
             return { ...state, todo: action.payload.value };
         case "SET_TODO_COMPLETED":
             return todoCompletedHandler(state, action.payload.value);
+        case "CLEAR_TODO":
+            return clearTodoHandler(state, action.payload.value);
         default:
             return state;
     }

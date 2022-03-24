@@ -21,6 +21,28 @@ function TodoCheckbox({ dispatch, curTodo }) {
 			>
 				{curTodo.todoName}
 			</span>
+			<div className="todo-icons">
+				<button className="btn-todo">
+					<span
+						className="material-icons-outlined"
+						onClick={() =>
+							dispatch({ type: "SET_TODO_EDIT", payload: { value: true } })
+						}
+					>
+						edit
+					</span>
+				</button>
+				<button className="btn-todo">
+					<span
+						className="material-icons-outlined"
+						onClick={() =>
+							dispatch({ type: "CLEAR_TODO", payload: { value: curTodo.id } })
+						}
+					>
+						close
+					</span>
+				</button>
+			</div>
 		</label>
 	);
 }

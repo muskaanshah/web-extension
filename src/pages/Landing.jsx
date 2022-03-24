@@ -59,7 +59,7 @@ function Landing() {
 						<span className="material-icons-outlined">repeat</span>
 					</button>
 				</div>
-				<p className="fw-600 nametag mt-0 mb-0-5">
+				<p className="fw-600 nametag mt-0 mb-1">
 					{wish}, {state.userName}
 				</p>
 				<Focus state={state} dispatch={dispatch} />
