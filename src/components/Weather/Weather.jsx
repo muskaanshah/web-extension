@@ -11,7 +11,6 @@ function Weather() {
 
 	const weatherAPI = async (lat, lon) => {
 		let API = "";
-		console.log(lat);
 		cityValue.length <= 0
 			? lat === undefined || lon === undefined
 				? (API = `https://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=${APIKEY}`)
@@ -19,7 +18,6 @@ function Weather() {
 			: (API = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}`);
 		try {
 			const res = await axios.get(API);
-			console.log(res);
 			setCity(res.data.name);
 			setTemperature(Math.round(res.data.main.temp - 273.15));
 		} catch (err) {
@@ -51,7 +49,7 @@ function Weather() {
 				<span className="material-icons-outlined pr-0-5">travel_explore</span>
 				<input
 					type="text"
-					className="city-input"
+					className="small-input"
 					onChange={(e) => setCityValueInput(e.target.value)}
 					value={cityValueInput}
 					onKeyPress={(e) => {

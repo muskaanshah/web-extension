@@ -4,6 +4,7 @@ import { useEffect, useReducer, useState } from "react";
 import { reducerFunc } from "../reducers/landingPageReducer";
 import { Focus } from "../components/Focus/Focus";
 import { Weather } from "../components/Weather/Weather";
+import { GoogleSearch } from "../components/GoogleSearch/GoogleSearch";
 
 const initialState = {
 	userName: "",
@@ -72,6 +73,7 @@ function Landing() {
 				<div className="todo-bottom-right">
 					<Todo />
 				</div>
+				<GoogleSearch />
 			</div>
 		</div>
 	);

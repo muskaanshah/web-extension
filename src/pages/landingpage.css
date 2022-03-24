@@ -100,7 +100,7 @@ input:-webkit-autofill:active {
 	text-decoration: line-through;
 }
 
-.city-input {
+.small-input {
 	background-color: transparent;
 	outline: none;
 	border: none;
@@ -118,4 +118,29 @@ input:-webkit-autofill:active {
 .weather-top-right:hover > .city-input-label {
 	display: flex;
 	align-items: flex-end;
+}
+
+.searchform {
+	position: absolute;
+	left: 1rem;
+	top: 0;
+	display: flex;
+	align-items: center;
+}
+
+.sitesearch::placeholder {
+	color: var(--white);
+	font-size: 0.9rem;
+}
+
+.search-btn {
+	background-color: transparent;
+	color: inherit;
+	width: 2.3rem;
+	aspect-ratio: 1;
+	border: none;
+}
+
+.search-btn .material-icons-outlined {
+	font-size: 1.25rem;
 }
