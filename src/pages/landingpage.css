@@ -71,6 +71,12 @@
 	align-items: flex-end;
 }
 
+.temperature-display {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
 .quote-bottom-center {
 	position: absolute;
 	bottom: 0;
