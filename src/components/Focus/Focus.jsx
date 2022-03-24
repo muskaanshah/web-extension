@@ -1,3 +1,5 @@
+import "./focus.css";
+
 function Focus({ state, dispatch }) {
 	const inputFocusHandler = () => {
 		const finalFocus = localStorage.getItem("Focus");
@@ -54,7 +56,6 @@ function Focus({ state, dispatch }) {
 						</button>
 					</label>
 					<p
-						className="appreciation-text"
 						style={{
 							opacity: `${state.todoCompleted ? "1" : "0"}`,
 							transition: "opacity 1s ease-out",
