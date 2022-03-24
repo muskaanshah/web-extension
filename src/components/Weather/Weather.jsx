@@ -11,8 +11,11 @@ function Weather() {
 
 	const weatherAPI = async (lat, lon) => {
 		let API = "";
+		console.log(lat);
 		cityValue.length <= 0
-			? (API = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude={part}&appid=${APIKEY}`)
+			? lat === undefined || lon === undefined
+				? (API = `https://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=${APIKEY}`)
+				: (API = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude={part}&appid=${APIKEY}`)
 			: (API = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}`);
 		try {
 			const res = await axios.get(API);
@@ -29,6 +32,7 @@ function Weather() {
 	};
 	const error = (err) => {
 		console.error(err);
+		weatherAPI();
 	};
 	const getGeoLocation = () => {
 		navigator.geolocation.getCurrentPosition(success, error);
