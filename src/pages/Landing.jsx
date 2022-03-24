@@ -18,7 +18,7 @@ function Landing() {
 	const [is24HourFormat, setTo24HourFormat] = useState(true);
 	const hour = today.getHours();
 	const minute = today.getMinutes();
-	const minutes = minute / 10 < 1 ? `0 ${minute}` : minute;
+	const minutes = minute / 10 < 1 ? `0${minute}` : minute;
 	const wish = `Good ${
 		(hour < 12 && "morning") || (hour < 16 && "afternoon") || "evening"
 	}`;
@@ -26,6 +26,16 @@ function Landing() {
 	// const AmOrPm = hour >= 12 ? "PM" : "AM";
 	const hours = hour % 12 || 12;
 	const time12 = `${hours}:${minutes}`;
+	const setupTime = localStorage.getItem("setupTime");
+	if (setupTime == null) {
+		localStorage.setItem("setupTime", today);
+	} else {
+		if (today - setupTime > hours * 60 * 60 * 1000) {
+			localStorage.removeItem("Focus");
+			localStorage.removeItem("Todos");
+			localStorage.setItem("setupTime", today);
+		}
+	}
 	useEffect(() => {
 		const user = localStorage.getItem("name");
 		dispatch({ type: "SET_USERNAME", payload: { value: user } });
@@ -46,7 +56,7 @@ function Landing() {
 						className="btn-focusaction"
 						onClick={() => setTo24HourFormat((prev) => !prev)}
 					>
-						<span class="material-icons-outlined">repeat</span>
+						<span className="material-icons-outlined">repeat</span>
 					</button>
 				</div>
 				<p className="fw-600 nametag mt-0 mb-0-5">

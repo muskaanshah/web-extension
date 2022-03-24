@@ -1,13 +1,22 @@
 import "./landingpage.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function InitialLanding() {
+	const [alreadyExistingUser, setExistingUser] = useState(false);
 	const [name, setName] = useState("");
+
+	useEffect(() => {
+		const user = localStorage.getItem("name");
+		setExistingUser(user);
+	}, []);
+
+	const navigate = useNavigate();
 	const inputHandler = (e) => {
 		setName(e.target.value);
 		localStorage.setItem("name", e.target.value);
 	};
+	alreadyExistingUser && navigate("/landing");
 	return (
 		<div className="landingimage overlay-wrapper">
 			<div className="overlay">

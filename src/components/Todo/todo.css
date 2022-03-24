@@ -6,6 +6,7 @@
 	aspect-ratio: 1;
 	display: flex;
 	flex-direction: column;
+	border-radius: 0.5rem;
 }
 
 .date-tag {
@@ -17,4 +18,61 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+
+.todo-text {
+	width: 90%;
+	padding: 0.5rem 1rem;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	color: var(--white);
+	font-family: "Spartan", sans-serif;
+	position: absolute;
+	bottom: 0.5rem;
+}
+
+.todo-list {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 5;
+	width: 250px;
+	border-radius: 0.5rem;
+}
+
+.todo-checkbox {
+	appearance: none;
+	background-color: transparent;
+	margin: 0;
+	font: inherit;
+	color: currentColor;
+	width: 1rem;
+	height: 1rem;
+	border: 0.1rem solid currentColor;
+	border-radius: 0.15rem;
+	display: inline-grid;
+	place-content: center;
+}
+
+.todo-checkbox::before {
+	content: "";
+	width: 0.65rem;
+	height: 0.65rem;
+	transform: scale(0);
+	transition: 120ms transform ease-in-out;
+	box-shadow: inset 1rem 1rem var(--white);
+}
+
+.todo-checkbox:checked::before {
+	transform: scale(1);
+	transform-origin: bottom left;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.label-todo {
+	display: flex;
+	align-items: center;
 }
