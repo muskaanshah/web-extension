@@ -16,7 +16,7 @@ function Focus({ state, dispatch }) {
 		<>
 			{state.focusFinal && !state.edit ? (
 				<>
-					<p className="fw-500 mt-2">TODAY</p>
+					<p className="fw-500 mt-2">MAIN FOCUS FOR TODAY</p>
 					<label className="label-focus">
 						<input
 							type="checkbox"
