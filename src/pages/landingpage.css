@@ -1,6 +1,7 @@
 .landingimage {
 	height: 100vh;
-	background: url("../assets/wallpaper.jpg");
+	/* background: url("../assets/wallpaper.jpg"); */
+	background: url("https://source.unsplash.com/random/?scenery,wallpaper");
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -143,4 +144,13 @@ input:-webkit-autofill:active {
 
 .search-btn .material-icons-outlined {
 	font-size: 1.25rem;
+}
+
+.quote-author {
+	font-size: 0;
+}
+
+.quote-bottom-center:hover > .quote-author {
+	font-size: 0.7rem;
+	transition: font-size 0.2s linear;
 }
