@@ -13,14 +13,22 @@ function TodoCheckbox({ dispatch, curTodo }) {
 				}
 			/>
 			<span
-				className="mx-1 fw-300 fs-0-9"
-				style={{
-					textDecoration: curTodo.todoCompleted && "line-through",
-					textAlign: "left",
-				}}
+				className={`mx-1 fw-300 fs-0-9 date-tag ${
+					curTodo.todoCompleted && "line-through"
+				}`}
 			>
 				{curTodo.todoName}
 			</span>
+			<button className="btn-todo mr-0-5">
+				<span
+					className="material-icons-outlined"
+					onClick={() =>
+						dispatch({ type: "CLEAR_TODO", payload: { value: curTodo.id } })
+					}
+				>
+					close
+				</span>
+			</button>
 		</label>
 	);
 }

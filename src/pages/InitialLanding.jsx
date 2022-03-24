@@ -20,7 +20,7 @@ function InitialLanding() {
 	return (
 		<div className="landingimage overlay-wrapper">
 			<div className="overlay">
-				<p className="fw-600 nametag mb-1">Hello, what's your name?</p>
+				<p className="fw-600 nametag mb-1-25">Hello, what's your name?</p>
 				<input
 					type="text"
 					className="fw-500 input-text name-text"

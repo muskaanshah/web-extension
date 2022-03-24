@@ -2,7 +2,7 @@ function TodoInput({ state, todoInputHandler, addTodo }) {
 	return (
 		<input
 			type="text"
-			className="todo-text"
+			className="todo-text input-text mb-0"
 			placeholder="New Todo"
 			value={state.newTodoValue}
 			onChange={(e) => todoInputHandler(e)}

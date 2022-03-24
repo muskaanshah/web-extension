@@ -23,17 +23,17 @@ function Landing() {
 		(hour < 12 && "morning") || (hour < 16 && "afternoon") || "evening"
 	}`;
 	const time24 = `${hour}:${minutes}`;
-	// const AmOrPm = hour >= 12 ? "PM" : "AM";
+	const day = today.toLocaleDateString({ weekday: "long" });
 	const hours = hour % 12 || 12;
 	const time12 = `${hours}:${minutes}`;
 	const setupTime = localStorage.getItem("setupTime");
 	if (setupTime == null) {
-		localStorage.setItem("setupTime", today);
+		localStorage.setItem("setupTime", day);
 	} else {
-		if (today - setupTime > hours * 60 * 60 * 1000) {
+		if (day !== setupTime) {
 			localStorage.removeItem("Focus");
 			localStorage.removeItem("Todos");
-			localStorage.setItem("setupTime", today);
+			localStorage.setItem("setupTime", day);
 		}
 	}
 	useEffect(() => {
@@ -59,7 +59,7 @@ function Landing() {
 						<span className="material-icons-outlined">repeat</span>
 					</button>
 				</div>
-				<p className="fw-600 nametag mt-0 mb-0-5">
+				<p className="fw-600 nametag mt-0 mb-1">
 					{wish}, {state.userName}
 				</p>
 				<Focus state={state} dispatch={dispatch} />
