@@ -28,10 +28,9 @@ function Focus({ state, dispatch }) {
 							}
 						/>
 						<span
-							className="my-0 fs-1-5 fw-600 mx-1"
-							style={{
-								textDecoration: state.todoCompleted && "line-through",
-							}}
+							className={`my-0 fs-1-5 fw-600 mx-1 ${
+								state.todoCompleted && "line-through"
+							}`}
 						>
 							{state.focusFinal}
 						</span>
