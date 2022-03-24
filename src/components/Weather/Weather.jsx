@@ -9,10 +9,6 @@ function Weather() {
 	const [cityValueInput, setCityValueInput] = useState("");
 	const [cityValue, setCityValue] = useState("");
 
-	useEffect(() => {
-		getGeoLocation();
-	}, [cityValue]);
-
 	const weatherAPI = async (lat, lon) => {
 		let API = "";
 		cityValue.length <= 0
@@ -37,6 +33,10 @@ function Weather() {
 	const getGeoLocation = () => {
 		navigator.geolocation.getCurrentPosition(success, error);
 	};
+	useEffect(() => {
+		getGeoLocation();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [cityValue]);
 	return (
 		<div className="weather-top-right">
 			<div className="temperature-display">
