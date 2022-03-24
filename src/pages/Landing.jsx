@@ -3,6 +3,7 @@ import "./landingpage.css";
 import { useEffect, useReducer, useState } from "react";
 import { reducerFunc } from "../reducers/landingPageReducer";
 import { Focus } from "../components/Focus/Focus";
+import { Weather } from "../components/Weather/Weather";
 
 const initialState = {
 	userName: "",
@@ -64,10 +65,7 @@ function Landing() {
 				</p>
 				<Focus state={state} dispatch={dispatch} />
 				<p className="todotag-bottom-right">Todo</p>
-				<div className="weather-top-right">
-					<p className="fs-1-25 fw-500 mb-0">27°</p>
-					<p className="fs-0-8 my-0">Chennai</p>
-				</div>
+				<Weather />
 				<p className="quote-bottom-center">
 					"Attitude makes all the difference"
 				</p>
