@@ -6,6 +6,7 @@ import { Focus } from "../components/Focus/Focus";
 import { Weather } from "../components/Weather/Weather";
 import { GoogleSearch } from "../components/GoogleSearch/GoogleSearch";
 import { Quote } from "../components/Quote/Quote";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
 	userName: "",
@@ -40,6 +41,11 @@ function Landing() {
 			localStorage.setItem("setupTime", day);
 		}
 	}
+	const navigate = useNavigate();
+	const changeNameHandler = () => {
+		localStorage.removeItem("name");
+		navigate("/");
+	};
 	useEffect(() => {
 		const user = localStorage.getItem("name");
 		dispatch({ type: "SET_USERNAME", payload: { value: user } });
@@ -81,7 +87,12 @@ function Landing() {
 				<p className="fw-600 nametag mt-0 mb-1">
 					{wish}, {state.userName}
 				</p>
-				<Focus state={state} dispatch={dispatch} />
+				<div className="focus-hover">
+					<Focus state={state} dispatch={dispatch} />
+					<button className="btn btn-change-name" onClick={changeNameHandler}>
+						Change name
+					</button>
+				</div>
 				<p className="todotag-bottom-right">Todo</p>
 				<Weather />
 				<Quote />

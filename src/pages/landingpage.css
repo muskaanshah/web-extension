@@ -154,3 +154,18 @@ input:-webkit-autofill:active {
 	font-size: 0.7rem;
 	transition: font-size 0.2s linear;
 }
+
+.btn-change-name {
+	opacity: 0;
+	border-radius: 2rem;
+	padding: 0.5rem 1rem;
+	background-color: transparent;
+	color: inherit;
+	border: 1px solid var(--white);
+	font: inherit;
+}
+
+.focus-hover:hover > .btn-change-name {
+	opacity: 1;
+	transition: opacity 0.2s ease-in;
+}
