@@ -19,17 +19,16 @@ const initialState = {
 	todoModal: false,
 };
 
-const initialTodoList = !localStorage.getItem("Todos")
-	? []
-	: JSON.parse(localStorage.getItem("Todos"));
-
-const initialStateTodos = {
-	todo: initialTodoList,
-	createTodo: false,
-	newTodoValue: "",
-};
-
 function Landing() {
+	const initialTodoList = !localStorage.getItem("Todos")
+		? []
+		: JSON.parse(localStorage.getItem("Todos"));
+
+	const initialStateTodos = {
+		todo: initialTodoList,
+		createTodo: false,
+		newTodoValue: "",
+	};
 	const [state, dispatch] = useReducer(reducerFunc, initialState);
 	const [stateTodo, dispatchTodo] = useReducer(todoReducer, initialStateTodos);
 	const [today, setDate] = useState(new Date());
@@ -57,7 +56,7 @@ function Landing() {
 	}
 	const navigate = useNavigate();
 	const changeNameHandler = () => {
-		localStorage.removeItem("name");
+		localStorage.setItem("name", "");
 		navigate("/");
 		dispatch({
 			type: "OPEN_SETTINGS_MODAL",
