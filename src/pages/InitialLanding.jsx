@@ -26,6 +26,7 @@ function InitialLanding() {
 					className="fw-500 input-text name-text"
 					value={name}
 					onChange={(e) => inputHandler(e)}
+					onKeyPress={(e) => e.key === "Enter" && navigate("/landing")}
 					autocomplete="off"
 				/>
 				{name.length > 0 && (
