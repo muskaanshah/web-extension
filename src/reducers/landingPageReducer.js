@@ -13,6 +13,10 @@ const reducerFunc = (state, action) => {
         case "CLEAR_FOCUS":
             localStorage.removeItem("Focus");
             return { ...state, focus: "", focusFinal: "", todoCompleted: false, edit: false }
+        case "OPEN_SETTINGS_MODAL":
+            return { ...state, settingsModal: !state.settingsModal }
+        case "OPEN_TODO_MODAL":
+            return { ...state, todoModal: !state.todoModal }
         default:
             return state
     }

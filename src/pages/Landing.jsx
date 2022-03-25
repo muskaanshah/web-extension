@@ -7,6 +7,7 @@ import { Weather } from "../components/Weather/Weather";
 import { GoogleSearch } from "../components/GoogleSearch/GoogleSearch";
 import { Quote } from "../components/Quote/Quote";
 import { useNavigate } from "react-router-dom";
+import { todoReducer } from "../reducers/todoreducer";
 
 const initialState = {
 	userName: "",
@@ -14,10 +15,23 @@ const initialState = {
 	focus: "",
 	todoCompleted: false,
 	edit: false,
+	settingsModal: false,
+	todoModal: false,
+};
+
+const initialTodoList = !localStorage.getItem("Todos")
+	? []
+	: JSON.parse(localStorage.getItem("Todos"));
+
+const initialStateTodos = {
+	todo: initialTodoList,
+	createTodo: false,
+	newTodoValue: "",
 };
 
 function Landing() {
 	const [state, dispatch] = useReducer(reducerFunc, initialState);
+	const [stateTodo, dispatchTodo] = useReducer(todoReducer, initialStateTodos);
 	const [today, setDate] = useState(new Date());
 	const [is24HourFormat, setTo24HourFormat] = useState(true);
 	const hour = today.getHours();
@@ -45,6 +59,9 @@ function Landing() {
 	const changeNameHandler = () => {
 		localStorage.removeItem("name");
 		navigate("/");
+		dispatch({
+			type: "OPEN_SETTINGS_MODAL",
+		});
 	};
 	useEffect(() => {
 		const user = localStorage.getItem("name");
@@ -54,9 +71,9 @@ function Landing() {
 		setInterval(() => {
 			setDate(() => new Date());
 		}, 1000);
-		fetch(
-			"https://api.unsplash.com/photos/?client_id=mS72mC1Lv1iV1AAi_mX5RK2DdPW32eQlQBawIzRyd6o"
-		).then((res) => console.log(res.json()));
+		// fetch(
+		// 	"https://api.unsplash.com/photos/?client_id=mS72mC1Lv1iV1AAi_mX5RK2DdPW32eQlQBawIzRyd6o"
+		// ).then((res) => console.log(res.json()));
 	}, []);
 	useEffect(() => {
 		const timeformat = localStorage?.getItem("Timeformat");
@@ -64,15 +81,19 @@ function Landing() {
 			? setTo24HourFormat(JSON.parse(timeformat))
 			: localStorage.setItem("Timeformat", is24HourFormat);
 	}, [is24HourFormat]);
+
+	useEffect(() => {
+		localStorage.setItem("Todos", JSON.stringify(stateTodo.todo));
+	}, [stateTodo.todo]);
 	return (
 		<div className="landingimage overlay-wrapper">
 			<div className="overlay">
-				<div className="centered">
+				<div className="time-hover centered">
 					<p className="time-display fw-500 mb-0">
 						{is24HourFormat ? time24 : time12}
 					</p>
 					<button
-						className="btn-focusaction"
+						className="btn-focusaction btn-time-change"
 						onClick={() => {
 							setTo24HourFormat((prev) => {
 								console.log(prev, "new");
@@ -87,17 +108,37 @@ function Landing() {
 				<p className="fw-600 nametag mt-0 mb-1">
 					{wish}, {state.userName}
 				</p>
-				<div className="focus-hover">
-					<Focus state={state} dispatch={dispatch} />
-					<button className="btn btn-change-name" onClick={changeNameHandler}>
-						Change name
-					</button>
+				<Focus state={state} dispatch={dispatch} />
+				<div className="settings-hover">
+					{state.settingsModal && (
+						<button
+							className="btn btn-change-name ml-0"
+							onClick={changeNameHandler}
+						>
+							Change name
+						</button>
+					)}
+					<span
+						className="material-icons-outlined"
+						onClick={() =>
+							dispatch({
+								type: "OPEN_SETTINGS_MODAL",
+							})
+						}
+					>
+						settings
+					</span>
 				</div>
-				<p className="todotag-bottom-right">Todo</p>
 				<Weather />
 				<Quote />
+				<p
+					className="todotag-bottom-right"
+					onClick={() => dispatch({ type: "OPEN_TODO_MODAL" })}
+				>
+					Todo
+				</p>
 				<div className="todo-bottom-right">
-					<Todo />
+					<Todo state={stateTodo} dispatch={dispatchTodo} />
 				</div>
 				<GoogleSearch />
 			</div>

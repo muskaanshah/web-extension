@@ -1,26 +1,8 @@
-import { useEffect, useReducer } from "react";
 import "./todo.css";
 import { TodoCheckbox } from "./TodoCheckbox";
-import { todoReducer } from "../../reducers/todoreducer";
 import { TodoInput } from "./TodoInput";
 
-const initialTodoList = !localStorage.getItem("Todos")
-	? []
-	: JSON.parse(localStorage.getItem("Todos"));
-
-const initialState = {
-	todo: initialTodoList,
-	createTodo: false,
-	newTodoValue: "",
-};
-
-function Todo() {
-	const [state, dispatch] = useReducer(todoReducer, initialState);
-
-	useEffect(() => {
-		localStorage.setItem("Todos", JSON.stringify(state.todo));
-	}, [state.todo]);
-
+function Todo({ state, dispatch }) {
 	const addTodo = (e) => {
 		dispatch({ type: "ADD_TODO", payload: { value: e.target.value } });
 		dispatch({ type: "CHANGE_TODO_VALUE", payload: { value: "" } });

@@ -1,6 +1,6 @@
 .todo {
 	position: relative;
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: var(--black-lessopacity);
 	z-index: 5;
 	width: 300px;
 	height: 250px;
@@ -91,7 +91,8 @@
 .btn-todo {
 	background-color: transparent;
 	color: inherit;
-	width: 2rem;
+	width: auto;
+	padding: 6px;
 	aspect-ratio: 1;
 	border: none;
 }

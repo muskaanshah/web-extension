@@ -64,6 +64,10 @@
 	bottom: 0;
 }
 
+.todotag-bottom-right:hover {
+	cursor: pointer;
+}
+
 .weather-top-right {
 	position: absolute;
 	right: 1rem;
@@ -157,22 +161,35 @@ input:-webkit-autofill:active {
 }
 
 .btn-change-name {
-	opacity: 0;
-	border-radius: 2rem;
-	padding: 0.5rem 1rem;
-	background-color: transparent;
+	background-color: var(--black-lessopacity);
 	color: inherit;
-	border: 1px solid var(--white);
 	font: inherit;
+	font-size: 0.8rem;
+	border-radius: 0.5rem;
 }
 
-.focus-hover:hover > .btn-change-name {
+.btn-change-name:hover {
+	text-decoration: underline;
+}
+
+.settings-hover {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
+}
+
+.btn-time-change {
+	opacity: 0;
+}
+
+.time-hover:hover > .btn-time-change {
 	opacity: 1;
 	transition: opacity 0.2s ease-in;
 }
 
-.focus-hover {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.settings-hover > .material-icons-outlined:hover {
+	cursor: pointer;
 }

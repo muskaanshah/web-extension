@@ -1,7 +1,8 @@
 .btn-focusaction {
 	background-color: transparent;
 	color: inherit;
-	width: 2.3rem;
+	width: auto;
+	padding: 6px;
 	aspect-ratio: 1;
 	border: none;
 }

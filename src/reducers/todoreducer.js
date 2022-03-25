@@ -21,13 +21,15 @@ const todoReducer = (state, action) => {
         case "START_TODO_LIST":
             return { ...state, createTodo: true };
         case "ADD_TODO":
-            return {
+            const temp = {
                 ...state,
                 todo: [
                     ...state.todo,
                     { id: uuid(), todoName: action.payload.value, todoCompleted: false },
-                ],
+                ]
             };
+            localStorage.setItem("Todos", JSON.stringify(state.todo));
+            return temp
         case "CHANGE_TODO_VALUE":
             return { ...state, newTodoValue: action.payload.value };
         case "SET_FROM_LOCALSTORAGE":
