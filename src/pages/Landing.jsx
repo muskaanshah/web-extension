@@ -37,7 +37,11 @@ function Landing() {
 	const minute = today.getMinutes();
 	const minutes = minute / 10 < 1 ? `0${minute}` : minute;
 	const wish = `Good ${
-		(hour < 12 && "morning") || (hour < 16 && "afternoon") || "evening"
+		(hour < 4 && "night") ||
+		(hour < 12 && "morning") ||
+		(hour < 16 && "afternoon") ||
+		(hour < 21 && "evening") ||
+		"night"
 	}`;
 	const time24 = `${hour}:${minutes}`;
 	const day = today.toLocaleDateString({ weekday: "long" });
@@ -136,9 +140,11 @@ function Landing() {
 				>
 					Todo
 				</p>
-				<div className="todo-bottom-right">
-					<Todo state={stateTodo} dispatch={dispatchTodo} />
-				</div>
+				{state.todoModal && (
+					<div className="todo-bottom-right">
+						<Todo state={stateTodo} dispatch={dispatchTodo} />
+					</div>
+				)}
 				<GoogleSearch />
 			</div>
 		</div>
