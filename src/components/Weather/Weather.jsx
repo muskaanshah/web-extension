@@ -42,6 +42,8 @@ function Weather() {
 	};
 	useEffect(() => {
 		getGeoLocation();
+		const temp = localStorage.getItem("Location");
+		setCityValue(temp);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cityValue]);
 	return (
@@ -66,6 +68,7 @@ function Weather() {
 					value={cityValueInput}
 					onKeyPress={(e) => {
 						if (e.key === "Enter") {
+							localStorage.setItem("Location", cityValueInput);
 							setCityValue(() => cityValueInput);
 							setCityValueInput("");
 						}
