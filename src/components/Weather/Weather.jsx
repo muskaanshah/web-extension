@@ -107,9 +107,11 @@ function Weather() {
 			</div>
 			{weatherModal && (
 				<div class="weather-modal">
-					<p className="mb-0-5">{temperature.city}</p>
-					<p className="my-0 fs-0-9 text-light">{temperature.description}</p>
-					<div className="temperature-display mt-1">
+					<p className="mb-0-5 pl-0-5">{temperature.city}</p>
+					<p className="my-0 fs-0-9 text-light pl-0-5">
+						{temperature.description}
+					</p>
+					<div className="temperature-display mt-1 pl-0-5">
 						<img
 							className="weather-icon my-0"
 							src={`http://openweathermap.org/img/wn/${temperature.weatherIcon}.png`}
@@ -121,8 +123,8 @@ function Weather() {
 							<p className="mb-1 text-light">Min: {temperature.min}°</p>
 						</div>
 					</div>
-					<p className="fs-0-8">Feels like: {temperature.feelsLike}°</p>
-					<p className="fs-0-8">Humidity: {temperature.humidity}</p>
+					<p className="fs-0-8 pl-0-5">Feels like: {temperature.feelsLike}°</p>
+					<p className="fs-0-8 pl-0-5">Humidity: {temperature.humidity}</p>
 				</div>
 			)}
 		</div>

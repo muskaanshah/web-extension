@@ -71,6 +71,7 @@
 .quote-bottom-center {
 	position: absolute;
 	bottom: 0;
+	max-width: 80%;
 }
 
 .todo-bottom-right {
