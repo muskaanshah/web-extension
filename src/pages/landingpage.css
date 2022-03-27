@@ -68,24 +68,10 @@
 	cursor: pointer;
 }
 
-.weather-top-right {
-	position: absolute;
-	right: 1rem;
-	top: 0;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-}
-
-.temperature-display {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-}
-
 .quote-bottom-center {
 	position: absolute;
 	bottom: 0;
+	max-width: 80%;
 }
 
 .todo-bottom-right {
@@ -102,28 +88,15 @@ input:-webkit-autofill:active {
 	-webkit-text-fill-color: var(--white);
 }
 
-.line-through {
-	text-decoration: line-through;
-}
-
 .small-input {
 	background-color: transparent;
 	outline: none;
 	border: none;
-	width: 100px;
+	width: 130px;
 	border-bottom: 1px solid var(--white);
 	font-size: 0.9rem;
 	color: var(--white);
 	font-family: "Spartan", sans-serif;
-}
-
-.city-input-label {
-	display: none;
-}
-
-.weather-top-right:hover > .city-input-label {
-	display: flex;
-	align-items: flex-end;
 }
 
 .searchform {

@@ -1,5 +1,6 @@
 import { Todo } from "../components/Todo/Todo";
 import "./landingpage.css";
+import "./loader.css";
 import { useEffect, useReducer, useState } from "react";
 import { reducerFunc } from "../reducers/landingPageReducer";
 import { Focus } from "../components/Focus/Focus";
@@ -16,7 +17,6 @@ const initialState = {
 	todoCompleted: false,
 	edit: false,
 	settingsModal: false,
-	todoModal: false,
 };
 
 function Landing() {
@@ -28,6 +28,7 @@ function Landing() {
 		todo: initialTodoList,
 		createTodo: false,
 		newTodoValue: "",
+		todoModal: false,
 	};
 	const [state, dispatch] = useReducer(reducerFunc, initialState);
 	const [stateTodo, dispatchTodo] = useReducer(todoReducer, initialStateTodos);
@@ -133,11 +134,11 @@ function Landing() {
 				<Quote />
 				<p
 					className="todotag-bottom-right"
-					onClick={() => dispatch({ type: "OPEN_TODO_MODAL" })}
+					onClick={() => dispatchTodo({ type: "OPEN_TODO_MODAL" })}
 				>
 					Todo
 				</p>
-				{state.todoModal && (
+				{stateTodo.todoModal && (
 					<div className="todo-bottom-right">
 						<Todo state={stateTodo} dispatch={dispatchTodo} />
 					</div>

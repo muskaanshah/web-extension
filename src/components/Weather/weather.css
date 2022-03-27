@@ -1,0 +1,64 @@
+.weather-top-right {
+	position: absolute;
+	right: 1rem;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.temperature-display {
+	display: flex;
+	align-items: stretch;
+}
+
+.weather-icon {
+	width: 4rem;
+}
+
+.temperature {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.temperature:hover {
+	cursor: pointer;
+}
+
+.city-input-label {
+	display: none;
+}
+
+.weather-hover {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.weather-hover:hover > .city-input-label {
+	display: flex;
+}
+
+.weather-modal {
+	background-color: var(--black-lessopacity);
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	width: 300px;
+	text-align: left;
+}
+
+.temperature-big {
+	font-size: 3rem;
+}
+
+.maxmin {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-evenly;
+}
+
+.maxmin > p {
+	font-size: 0.7rem;
+}

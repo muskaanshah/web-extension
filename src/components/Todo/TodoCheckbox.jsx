@@ -14,7 +14,7 @@ function TodoCheckbox({ dispatch, curTodo }) {
 			/>
 			<span
 				className={`mx-1 fw-300 fs-0-9 date-tag ${
-					curTodo.todoCompleted && "line-through"
+					curTodo.todoCompleted && "text-strikethrough"
 				}`}
 			>
 				{curTodo.todoName}

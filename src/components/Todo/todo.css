@@ -106,3 +106,10 @@
 	flex-grow: 1;
 	display: block;
 }
+
+.flex-space-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
