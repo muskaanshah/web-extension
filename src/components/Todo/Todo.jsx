@@ -16,7 +16,15 @@ function Todo({ state, dispatch }) {
 				<>
 					{state.todo.length !== 0 ? (
 						<div className="todo-list pb-3 pl-1">
-							<p className="date-tag fs-1-25 pl-1">Today</p>
+							<div className="flex-space-between my-1">
+								<p className="date-tag fs-1-25 pl-1 my-0">Today</p>
+								<button
+									className="btn btn-todo mr-0-5"
+									onClick={() => dispatch({ type: "OPEN_TODO_MODAL" })}
+								>
+									<span className="material-icons-outlined">expand_more</span>
+								</button>
+							</div>
 							{state.todo.map((curTodo) => (
 								<TodoCheckbox dispatch={dispatch} curTodo={curTodo} />
 							))}
@@ -28,7 +36,15 @@ function Todo({ state, dispatch }) {
 						</div>
 					) : (
 						<div className="todo">
-							<p className="date-tag fs-1-25 pl-1">Today</p>
+							<div className="flex-space-between my-1">
+								<p className="date-tag fs-1-25 pl-1 my-0">Today</p>
+								<button
+									className="btn btn-todo mr-0-5"
+									onClick={() => dispatch({ type: "OPEN_TODO_MODAL" })}
+								>
+									<span className="material-icons-outlined">expand_more</span>
+								</button>
+							</div>
 							<div className="centered" style={{ height: "50%" }}>
 								<p>No todos added yet</p>
 							</div>

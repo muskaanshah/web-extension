@@ -68,30 +68,6 @@
 	cursor: pointer;
 }
 
-.weather-top-right {
-	position: absolute;
-	right: 1rem;
-	top: 0;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-}
-
-.temperature-display {
-	display: flex;
-	align-items: flex-start;
-}
-
-.weather-icon {
-	width: 4rem;
-}
-
-.temperature {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-}
-
 .quote-bottom-center {
 	position: absolute;
 	bottom: 0;
@@ -111,10 +87,6 @@ input:-webkit-autofill:active {
 	-webkit-text-fill-color: var(--white);
 }
 
-.line-through {
-	text-decoration: line-through;
-}
-
 .small-input {
 	background-color: transparent;
 	outline: none;
@@ -124,20 +96,6 @@ input:-webkit-autofill:active {
 	font-size: 0.9rem;
 	color: var(--white);
 	font-family: "Spartan", sans-serif;
-}
-
-.city-input-label {
-	display: none;
-}
-
-.weather-hover {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-}
-
-.weather-hover:hover > .city-input-label {
-	display: flex;
 }
 
 .searchform {

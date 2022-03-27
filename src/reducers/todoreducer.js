@@ -38,6 +38,8 @@ const todoReducer = (state, action) => {
             return todoCompletedHandler(state, action.payload.value);
         case "CLEAR_TODO":
             return clearTodoHandler(state, action.payload.value);
+        case "OPEN_TODO_MODAL":
+            return { ...state, todoModal: !state.todoModal }
         default:
             return state;
     }

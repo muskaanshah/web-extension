@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./weather.css";
 
 const APIKEY = "40d6f448e392001b5598241621cd7b46";
 
 function Weather() {
-	const [city, setCity] = useState("");
-	const [temperature, setTemperature] = useState(0);
+	const [temperature, setTemperature] = useState({
+		city: "",
+		degrees: 0,
+		weatherIcon: "",
+		max: 0,
+		min: 0,
+		feelsLike: 0,
+		humidity: 0,
+		description: "",
+	});
 	const [cityValueInput, setCityValueInput] = useState("");
 	const [cityValue, setCityValue] = useState("");
-	const [weatherIcon, setWeatherIcon] = useState("");
 	const [weatherModal, setWeatherModal] = useState(false);
 	const [loader, setLoader] = useState(true);
 	const [errorMsg, setErrorMsg] = useState("");
@@ -23,9 +31,17 @@ function Weather() {
 		setLoader(true);
 		try {
 			const res = await axios.get(API);
-			setWeatherIcon(res.data.weather[0].icon);
-			setCity(res.data.name);
-			setTemperature(Math.round(res.data.main.temp - 273.15));
+			console.log(res.data);
+			setTemperature({
+				city: res.data.name,
+				degrees: Math.round(res.data.main.temp - 273.15),
+				weatherIcon: res.data.weather[0].icon,
+				max: Math.round(res.data.main.temp_max - 273.15),
+				min: Math.round(res.data.main.temp_min - 273.15),
+				humidity: res.data.main.humidity,
+				feelsLike: Math.round(res.data.main.feels_like - 273.15),
+				description: res.data.weather[0].description,
+			});
 			setLoader(false);
 			setErrorMsg(() => "");
 		} catch (err) {
@@ -76,19 +92,39 @@ function Weather() {
 					<div className="temperature-display">
 						<img
 							className="weather-icon"
-							src={`http://openweathermap.org/img/wn/${weatherIcon}.png`}
+							src={`http://openweathermap.org/img/wn/${temperature.weatherIcon}.png`}
 							alt="weather"
 						/>
 						<div
 							className="temperature"
 							onClick={() => setWeatherModal((weatherModal) => !weatherModal)}
 						>
-							<p className="fs-1-25 fw-500 mb-0">{temperature}°</p>
-							<p className="fs-0-8 my-0">{city}</p>
+							<p className="fs-1-25 fw-500 mb-0">{temperature.degrees}°</p>
+							<p className="fs-0-8 my-0">{temperature.city}</p>
 						</div>
 					</div>
 				)}
 			</div>
+			{weatherModal && (
+				<div class="weather-modal">
+					<p className="mb-0-5">{temperature.city}</p>
+					<p className="my-0 fs-0-9 text-light">{temperature.description}</p>
+					<div className="temperature-display mt-1">
+						<img
+							className="weather-icon my-0"
+							src={`http://openweathermap.org/img/wn/${temperature.weatherIcon}.png`}
+							alt="weather"
+						/>
+						<p className="temperature-big my-0">{temperature.degrees}°</p>
+						<div className="maxmin ml-0-5 my-0">
+							<p className="my-0 text-light">Max: {temperature.max}°</p>
+							<p className="mb-1 text-light">Min: {temperature.min}°</p>
+						</div>
+					</div>
+					<p className="fs-0-8">Feels like: {temperature.feelsLike}°</p>
+					<p className="fs-0-8">Humidity: {temperature.humidity}</p>
+				</div>
+			)}
 		</div>
 	);
 }
