@@ -8,7 +8,9 @@ function Weather() {
 	const [temperature, setTemperature] = useState(0);
 	const [cityValueInput, setCityValueInput] = useState("");
 	const [cityValue, setCityValue] = useState("");
-	const [loader, setLoader] = useState(false);
+	const [weatherIcon, setWeatherIcon] = useState("");
+	const [weatherModal, setWeatherModal] = useState(false);
+	const [loader, setLoader] = useState(true);
 	const [errorMsg, setErrorMsg] = useState("");
 
 	const weatherAPI = async (lat, lon) => {
@@ -21,6 +23,7 @@ function Weather() {
 		setLoader(true);
 		try {
 			const res = await axios.get(API);
+			setWeatherIcon(res.data.weather[0].icon);
 			setCity(res.data.name);
 			setTemperature(Math.round(res.data.main.temp - 273.15));
 			setLoader(false);
@@ -48,33 +51,44 @@ function Weather() {
 	}, [cityValue]);
 	return (
 		<div className="weather-top-right">
-			{loader ? (
-				<div className="loader mt-1">Loading...</div>
-			) : errorMsg !== "" ? (
-				<div className="mt-1">{errorMsg}</div>
-			) : (
-				<div className="temperature-display">
-					<p className="fs-1-25 fw-500 mb-0">{temperature}°</p>
-					<p className="fs-0-8 my-0">{city}</p>
-				</div>
-			)}
-
-			<label className="city-input-label">
-				<span className="material-icons-outlined pr-0-5">travel_explore</span>
-				<input
-					type="text"
-					className="small-input"
-					onChange={(e) => setCityValueInput(e.target.value)}
-					value={cityValueInput}
-					onKeyPress={(e) => {
-						if (e.key === "Enter") {
-							localStorage.setItem("Location", cityValueInput);
-							setCityValue(() => cityValueInput);
-							setCityValueInput("");
-						}
-					}}
-				/>
-			</label>
+			<div className="weather-hover">
+				<label className="city-input-label mt-0-5">
+					<span className="material-icons-outlined pr-0-5">travel_explore</span>
+					<input
+						type="text"
+						className="small-input"
+						onChange={(e) => setCityValueInput(e.target.value)}
+						value={cityValueInput}
+						onKeyPress={(e) => {
+							if (e.key === "Enter") {
+								localStorage.setItem("Location", cityValueInput);
+								setCityValue(() => cityValueInput);
+								setCityValueInput("");
+							}
+						}}
+					/>
+				</label>
+				{loader ? (
+					<div className="loader mt-1">Loading...</div>
+				) : errorMsg !== "" ? (
+					<div className="mt-1">{errorMsg}</div>
+				) : (
+					<div className="temperature-display">
+						<img
+							className="weather-icon"
+							src={`http://openweathermap.org/img/wn/${weatherIcon}.png`}
+							alt="weather"
+						/>
+						<div
+							className="temperature"
+							onClick={() => setWeatherModal((weatherModal) => !weatherModal)}
+						>
+							<p className="fs-1-25 fw-500 mb-0">{temperature}°</p>
+							<p className="fs-0-8 my-0">{city}</p>
+						</div>
+					</div>
+				)}
+			</div>
 		</div>
 	);
 }

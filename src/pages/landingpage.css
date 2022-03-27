@@ -79,6 +79,15 @@
 
 .temperature-display {
 	display: flex;
+	align-items: flex-start;
+}
+
+.weather-icon {
+	width: 4rem;
+}
+
+.temperature {
+	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
 }
@@ -121,9 +130,14 @@ input:-webkit-autofill:active {
 	display: none;
 }
 
-.weather-top-right:hover > .city-input-label {
+.weather-hover {
 	display: flex;
+	flex-direction: column;
 	align-items: flex-end;
+}
+
+.weather-hover:hover > .city-input-label {
+	display: flex;
 }
 
 .searchform {
