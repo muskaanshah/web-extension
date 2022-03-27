@@ -74,9 +74,6 @@ function Landing() {
 		setInterval(() => {
 			setDate(() => new Date());
 		}, 1000);
-		// fetch(
-		// 	"https://api.unsplash.com/photos/?client_id=mS72mC1Lv1iV1AAi_mX5RK2DdPW32eQlQBawIzRyd6o"
-		// ).then((res) => console.log(res.json()));
 	}, []);
 	useEffect(() => {
 		const timeformat = localStorage?.getItem("Timeformat");
