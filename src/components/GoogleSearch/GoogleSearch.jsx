@@ -11,7 +11,7 @@ function GoogleSearch() {
 				autoComplete="off"
 				className="form-control search small-input sitesearch fs-0-9"
 				name="q"
-				placeholder="Search"
+				placeholder="Google search"
 				type="text"
 			/>
 			<button className="search-btn" type="submit">
