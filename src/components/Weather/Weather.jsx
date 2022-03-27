@@ -8,6 +8,8 @@ function Weather() {
 	const [temperature, setTemperature] = useState(0);
 	const [cityValueInput, setCityValueInput] = useState("");
 	const [cityValue, setCityValue] = useState("");
+	const [loader, setLoader] = useState(false);
+	const [errorMsg, setErrorMsg] = useState("");
 
 	const weatherAPI = async (lat, lon) => {
 		let API = "";
@@ -16,12 +18,16 @@ function Weather() {
 				? (API = `https://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=${APIKEY}`)
 				: (API = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude={part}&appid=${APIKEY}`)
 			: (API = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}`);
+		setLoader(true);
 		try {
 			const res = await axios.get(API);
 			setCity(res.data.name);
 			setTemperature(Math.round(res.data.main.temp - 273.15));
+			setLoader(false);
+			setErrorMsg(() => "");
 		} catch (err) {
-			console.error(err);
+			setErrorMsg(() => "Not found");
+			setLoader(false);
 		}
 	};
 	const success = (pos) => {
@@ -29,7 +35,6 @@ function Weather() {
 		weatherAPI(crd.latitude, crd.longitude);
 	};
 	const error = (err) => {
-		console.error(err);
 		weatherAPI();
 	};
 	const getGeoLocation = () => {
@@ -41,10 +46,17 @@ function Weather() {
 	}, [cityValue]);
 	return (
 		<div className="weather-top-right">
-			<div className="temperature-display">
-				<p className="fs-1-25 fw-500 mb-0">{temperature}°</p>
-				<p className="fs-0-8 my-0">{city}</p>
-			</div>
+			{loader ? (
+				<div className="loader mt-1">Loading...</div>
+			) : errorMsg !== "" ? (
+				<div className="mt-1">{errorMsg}</div>
+			) : (
+				<div className="temperature-display">
+					<p className="fs-1-25 fw-500 mb-0">{temperature}°</p>
+					<p className="fs-0-8 my-0">{city}</p>
+				</div>
+			)}
+
 			<label className="city-input-label">
 				<span className="material-icons-outlined pr-0-5">travel_explore</span>
 				<input

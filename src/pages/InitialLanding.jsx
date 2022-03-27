@@ -27,7 +27,7 @@ function InitialLanding() {
 					value={name}
 					onChange={(e) => inputHandler(e)}
 					onKeyPress={(e) => e.key === "Enter" && navigate("/landing")}
-					autocomplete="off"
+					autoComplete="off"
 				/>
 				{name.length > 0 && (
 					<Link to="/landing" className="btn bg-white borderradius-2">

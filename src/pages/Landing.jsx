@@ -1,5 +1,6 @@
 import { Todo } from "../components/Todo/Todo";
 import "./landingpage.css";
+import "./loader.css";
 import { useEffect, useReducer, useState } from "react";
 import { reducerFunc } from "../reducers/landingPageReducer";
 import { Focus } from "../components/Focus/Focus";

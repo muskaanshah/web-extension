@@ -5,11 +5,10 @@ function GoogleSearch() {
 			className="searchform mt-0-5"
 			method="get"
 			name="searchform"
-			target="_blank"
 		>
 			<input name="sitesearch" type="hidden" />
 			<input
-				autocomplete="off"
+				autoComplete="off"
 				className="form-control search small-input sitesearch fs-0-9"
 				name="q"
 				placeholder="Search"
