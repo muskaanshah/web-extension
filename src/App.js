@@ -1,16 +1,19 @@
 
 import './App.css';
 import { InitialLanding } from './pages/InitialLanding';
-import { Routes, Route } from "react-router-dom";
 import { Landing } from './pages/Landing';
+import { useEffect, useState } from "react";
 
 function App() {
+  const [alreadyExistingUser, setExistingUser] = useState(false);
+  useEffect(() => {
+    const user = localStorage.getItem("name");
+    setExistingUser(user);
+  }, [alreadyExistingUser]);
   return (
     <div className="App">
-      <Routes >
-        <Route path="/" element={<InitialLanding />} />
-        <Route path="/landing" element={<Landing />} />
-      </Routes>
+      {alreadyExistingUser ? <Landing /> : <InitialLanding />
+      }
     </div >
   );
 }

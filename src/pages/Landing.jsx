@@ -7,7 +7,6 @@ import { Focus } from "../components/Focus/Focus";
 import { Weather } from "../components/Weather/Weather";
 import { GoogleSearch } from "../components/GoogleSearch/GoogleSearch";
 import { Quote } from "../components/Quote/Quote";
-import { useNavigate } from "react-router-dom";
 import { todoReducer } from "../reducers/todoreducer";
 
 const initialState = {
@@ -59,13 +58,12 @@ function Landing() {
 			localStorage.setItem("setupTime", day);
 		}
 	}
-	const navigate = useNavigate();
 	const changeNameHandler = () => {
 		localStorage.setItem("name", "");
-		navigate("/");
 		dispatch({
 			type: "OPEN_SETTINGS_MODAL",
 		});
+		window.location.reload(false);
 	};
 	useEffect(() => {
 		const user = localStorage.getItem("name");
@@ -97,7 +95,6 @@ function Landing() {
 						className="btn-focusaction btn-time-change"
 						onClick={() => {
 							setTo24HourFormat((prev) => {
-								console.log(prev, "new");
 								localStorage.setItem("Timeformat", !prev);
 								return !prev;
 							});

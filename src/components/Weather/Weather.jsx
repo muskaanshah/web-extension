@@ -31,7 +31,6 @@ function Weather() {
 		setLoader(true);
 		try {
 			const res = await axios.get(API);
-			console.log(res.data);
 			setTemperature({
 				city: res.data.name,
 				degrees: Math.round(res.data.main.temp - 273.15),

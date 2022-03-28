@@ -1,22 +1,8 @@
 import "./landingpage.css";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function InitialLanding() {
-	const [alreadyExistingUser, setExistingUser] = useState(false);
 	const [name, setName] = useState("");
-
-	useEffect(() => {
-		const user = localStorage.getItem("name");
-		setExistingUser(user);
-	}, []);
-
-	const navigate = useNavigate();
-	const inputHandler = (e) => {
-		setName(e.target.value);
-		localStorage.setItem("name", e.target.value);
-	};
-	alreadyExistingUser && navigate("/landing");
 	return (
 		<div className="landingimage overlay-wrapper">
 			<div className="overlay">
@@ -25,14 +11,25 @@ function InitialLanding() {
 					type="text"
 					className="fw-500 input-text name-text"
 					value={name}
-					onChange={(e) => inputHandler(e)}
-					onKeyPress={(e) => e.key === "Enter" && navigate("/landing")}
+					onChange={(e) => setName(e.target.value)}
+					onKeyPress={(e) => {
+						if (e.key === "Enter") {
+							localStorage.setItem("name", name);
+							window.location.reload(false);
+						}
+					}}
 					autoComplete="off"
 				/>
 				{name.length > 0 && (
-					<Link to="/landing" className="btn bg-white borderradius-2">
+					<button
+						className="btn bg-white borderradius-2"
+						onClick={() => {
+							localStorage.setItem("name", name);
+							window.location.reload(false);
+						}}
+					>
 						<span>Continue ›</span>
-					</Link>
+					</button>
 				)}
 			</div>
 		</div>
