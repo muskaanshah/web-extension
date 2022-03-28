@@ -1,7 +1,5 @@
 .landingimage {
 	height: 100vh;
-	/* background: url("../assets/wallpaper.jpg"); */
-	/* background: url("https://placeimg.com/1366/768/nature"); */
 	background: url("https://source.unsplash.com/random/?nature/1366×768");
 	background-repeat: no-repeat;
 	background-size: cover;

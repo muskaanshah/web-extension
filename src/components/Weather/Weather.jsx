@@ -23,7 +23,7 @@ function Weather() {
 
 	const weatherAPI = async (lat, lon) => {
 		let API = "";
-		cityValue.length <= 0
+		cityValue === null
 			? lat === undefined || lon === undefined
 				? (API = `https://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=${APIKEY}`)
 				: (API = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude={part}&appid=${APIKEY}`)
@@ -59,9 +59,9 @@ function Weather() {
 		navigator.geolocation.getCurrentPosition(success, error);
 	};
 	useEffect(() => {
-		getGeoLocation();
 		const temp = localStorage.getItem("Location");
 		setCityValue(temp);
+		getGeoLocation();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cityValue]);
 	return (
