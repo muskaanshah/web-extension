@@ -1,0 +1,33 @@
+.countdown {
+	position: absolute;
+	right: 5rem;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.countdown-date,
+.countdown-time {
+	background-color: transparent;
+	color: var(--white);
+	color-scheme: dark;
+	padding: 0.5rem;
+	outline: none;
+	border: 1px solid var(--white);
+}
+
+.desc-input {
+	background-color: transparent;
+	outline: none;
+	border: none;
+	width: 200px;
+	border-bottom: 1px solid var(--white);
+	font-size: 0.9rem;
+	color: var(--white);
+	font-family: "Spartan", sans-serif;
+}
+
+.desc-input::placeholder {
+	color: var(--white);
+}

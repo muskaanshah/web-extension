@@ -8,6 +8,7 @@ import { Weather } from "../components/Weather/Weather";
 import { GoogleSearch } from "../components/GoogleSearch/GoogleSearch";
 import { Quote } from "../components/Quote/Quote";
 import { todoReducer } from "../reducers/todoreducer";
+import { Countdown } from "../components/countdown/Countdown";
 
 const initialState = {
 	userName: "",
@@ -128,6 +129,7 @@ function Landing() {
 					</span>
 				</div>
 				<Weather />
+				<Countdown />
 				<Quote />
 				<p
 					className="todotag-bottom-right"
