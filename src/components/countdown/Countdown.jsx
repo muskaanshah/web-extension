@@ -4,12 +4,14 @@ import "./countdown.css";
 import { CountdownModal } from "./CountdownModal";
 import { dateFormat } from "../../utils/dateFormat";
 
+const emptyEvent = {
+	description: "",
+	dateByUser: "",
+};
+
 function Countdown() {
 	const eventFromLocalStorage = !localStorage.getItem("Event")
-		? {
-				description: "",
-				dateByUser: "",
-		  }
+		? emptyEvent
 		: {
 				...JSON.parse(localStorage.getItem("Event")),
 				dateByUser: dateFormat(
@@ -46,20 +48,14 @@ function Countdown() {
 			setDifference(`${diffInMinutes}m`);
 		} else if (diffInMinutes <= 0) {
 			localStorage.removeItem("Event");
-			setUserEvent({
-				description: "",
-				dateByUser: "",
-			});
+			setUserEvent(emptyEvent);
 			setDifference("");
 		}
 	}, [userEvent.dateByUser, today]);
 
 	const removeEventHandler = () => {
 		localStorage.removeItem("Event");
-		setUserEvent({
-			description: "",
-			dateByUser: "",
-		});
+		setUserEvent(emptyEvent);
 		setDifference("");
 	};
 
