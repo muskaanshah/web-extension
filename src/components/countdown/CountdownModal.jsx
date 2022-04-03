@@ -38,6 +38,7 @@ function CountdownModal({ userEvent, setUserEvent, today, setModalToggle }) {
 					placeholder="Description"
 					onChange={(e) => setDescriptionHandler(e.target.value)}
 					required
+					autoFocus
 				/>
 				<span className="fs-0-8 display-inlineblock mb-0-5">
 					Set date and time of the event

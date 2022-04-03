@@ -30,7 +30,7 @@
 }
 
 .desc-input::placeholder {
-	color: var(--white);
+	color: var(--grey);
 }
 
 .countdown-modal {
