@@ -56,6 +56,15 @@ function Countdown() {
 		}
 	}, [userEvent.dateByUser, today]);
 
+	const removeEventHandler = () => {
+		localStorage.removeItem("Event");
+		setUserEvent({
+			description: "",
+			dateByUser: "",
+		});
+		setDifference("");
+	};
+
 	return (
 		<div className="countdown">
 			{difference.length !== 0 ? (
@@ -69,6 +78,9 @@ function Countdown() {
 						onClick={() => setModalToggle(true)}
 					>
 						<span className="material-icons-outlined">edit</span>
+					</button>
+					<button className="btn btn-edit-event" onClick={removeEventHandler}>
+						<span className="material-icons-outlined">close</span>
 					</button>
 				</div>
 			) : (

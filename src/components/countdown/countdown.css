@@ -85,3 +85,7 @@
 	background-color: rgba(0, 0, 0, 0.4);
 	border-radius: 50%;
 }
+
+.event-details > .text-left {
+	max-width: 130px;
+}
