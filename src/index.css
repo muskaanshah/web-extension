@@ -24,3 +24,7 @@ code {
 .fs-0-7 {
 	font-size: 0.7rem;
 }
+
+.text-left {
+	text-align: left;
+}

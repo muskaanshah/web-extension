@@ -60,7 +60,7 @@ function Countdown() {
 		<div className="countdown">
 			{difference.length !== 0 ? (
 				<div className="event-details">
-					<div>
+					<div className="text-left">
 						<p className="fs-1-25 fw-500 my-0">{difference}</p>
 						<p className="fs-0-8 my-0">{userEvent.description}</p>
 					</div>
