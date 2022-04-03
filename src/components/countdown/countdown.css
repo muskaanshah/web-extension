@@ -68,7 +68,8 @@
 }
 
 .event-details:hover .btn-edit-event {
-	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.2s ease-in;
 }
 
 .btn-edit-event {
@@ -78,7 +79,7 @@
 	padding: 6px;
 	aspect-ratio: 1;
 	border: none;
-	visibility: hidden;
+	opacity: 0;
 }
 
 .btn-edit-event:hover {
