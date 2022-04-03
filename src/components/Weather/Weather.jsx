@@ -36,6 +36,7 @@ function Weather() {
 
 	const weatherAPI = async (lat, lon) => {
 		const API = getAPI(lat, lon);
+		setLoader(true);
 		try {
 			const res = await axios.get(API);
 			setTemperature({
