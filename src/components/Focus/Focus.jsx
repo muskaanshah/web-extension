@@ -62,15 +62,18 @@ function Focus({ state, dispatch }) {
 							</span>
 						</button>
 					</label>
-					<p
+					<div
 						style={{
 							opacity: `${state.todoCompleted ? "1" : "0"}`,
-							transition: "opacity 1s ease-out",
+							transition: "opacity 1s ease-in",
 						}}
 					>
-						{APPRECIATION_ARRAY[Math.floor(Math.random() * 4)]}
-						{/* Great work! */}
-					</p>
+						{state.todoCompleted ? (
+							APPRECIATION_ARRAY[Math.floor(Math.random() * 4)]
+						) : (
+							<p className="my-0 blank">.</p>
+						)}
+					</div>
 				</>
 			) : (
 				<>
