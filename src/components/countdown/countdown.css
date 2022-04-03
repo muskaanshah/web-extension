@@ -1,10 +1,11 @@
 .countdown {
 	position: absolute;
-	right: 5rem;
+	left: 1rem;
 	top: 0;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
+	align-items: flex-start;
+	margin-top: 1rem;
 }
 
 .countdown-date,
@@ -30,4 +31,29 @@
 
 .desc-input::placeholder {
 	color: var(--white);
+}
+
+.countdown-modal {
+	width: 250px;
+	background-color: var(--black-lessopacity);
+	border-radius: 0.5rem;
+	position: relative;
+}
+
+.add-countdown .material-icons-outlined {
+	font-size: 1.75rem;
+	font-weight: 100;
+	color: var(--white);
+}
+
+.add-countdown:hover {
+	cursor: pointer;
+}
+
+.btn-close-countdownmodal {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 2px;
+	padding: 4px;
 }

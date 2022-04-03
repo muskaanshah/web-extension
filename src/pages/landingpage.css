@@ -99,7 +99,6 @@ input:-webkit-autofill:active {
 
 .searchform {
 	position: absolute;
-	left: 1rem;
 	top: 0;
 	display: flex;
 	align-items: center;

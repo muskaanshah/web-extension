@@ -21,6 +21,7 @@ function Countdown() {
 	const [userEvent, setUserEvent] = useState(eventFromLocalStorage);
 	let [difference, setDifference] = useState("");
 	const [today, setDate] = useState(new Date());
+	const [modalToggle, setModalToggle] = useState(false);
 
 	useEffect(() => {
 		setInterval(() => {
@@ -57,13 +58,28 @@ function Countdown() {
 
 	return (
 		<div className="countdown">
-			<p className="fs-1-25 fw-500 mb-0">{difference}</p>
-			<p className="fs-0-8 my-0">{userEvent.description}</p>
-			<CountdownModal
-				userEvent={userEvent}
-				setUserEvent={setUserEvent}
-				today={today}
-			/>
+			{difference.length !== 0 ? (
+				<>
+					<p className="fs-1-25 fw-500 my-0">{difference}</p>
+					<p className="fs-0-8 my-0">{userEvent.description}</p>
+				</>
+			) : (
+				<div
+					className="centered flex-column add-countdown"
+					onClick={() => setModalToggle(true)}
+				>
+					<span class="material-icons-outlined">add_circle</span>
+					<span className="fs-0-7">Add countdown</span>
+				</div>
+			)}
+			{modalToggle && (
+				<CountdownModal
+					userEvent={userEvent}
+					setUserEvent={setUserEvent}
+					today={today}
+					setModalToggle={setModalToggle}
+				/>
+			)}
 		</div>
 	);
 }
