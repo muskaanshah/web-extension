@@ -82,7 +82,7 @@ function Countdown() {
 					className="centered flex-column add-countdown"
 					onClick={() => setModalToggle(true)}
 				>
-					<span class="material-icons-outlined">add_circle</span>
+					<span className="material-icons-outlined">add_circle</span>
 					<span className="fs-0-7">Add countdown</span>
 				</div>
 			)}

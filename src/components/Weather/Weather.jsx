@@ -110,7 +110,7 @@ function Weather() {
 				)}
 			</div>
 			{weatherModal && (
-				<div class="weather-modal">
+				<div className="weather-modal">
 					<p className="mb-0-5 pl-0-5">{temperature.city}</p>
 					<p className="my-0 fs-0-9 text-light pl-0-5">
 						{temperature.description}
