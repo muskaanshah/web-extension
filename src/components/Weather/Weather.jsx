@@ -24,7 +24,6 @@ function Weather() {
 
 	const getAPI = (lat, lon) => {
 		let API = "";
-		console.log(cityValue);
 		if (cityValue === "") {
 			if (lat === undefined || lon === undefined)
 				API = `https://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=${APIKEY}`;
@@ -37,7 +36,6 @@ function Weather() {
 
 	const weatherAPI = async (lat, lon) => {
 		const API = getAPI(lat, lon);
-		console.log(API);
 		try {
 			const res = await axios.get(API);
 			setTemperature({
