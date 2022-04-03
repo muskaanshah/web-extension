@@ -16,3 +16,15 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 }
+
+.btn:hover {
+	cursor: pointer;
+}
+
+.fs-0-7 {
+	font-size: 0.7rem;
+}
+
+.text-left {
+	text-align: left;
+}

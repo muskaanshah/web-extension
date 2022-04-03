@@ -88,16 +88,16 @@ function Weather() {
 				) : errorMsg !== "" ? (
 					<div className="mt-1">{errorMsg}</div>
 				) : (
-					<div className="temperature-display">
+					<div
+						className="temperature-display"
+						onClick={() => setWeatherModal((weatherModal) => !weatherModal)}
+					>
 						<img
 							className="weather-icon"
 							src={`http://openweathermap.org/img/wn/${temperature.weatherIcon}.png`}
 							alt="weather"
 						/>
-						<div
-							className="temperature"
-							onClick={() => setWeatherModal((weatherModal) => !weatherModal)}
-						>
+						<div className="temperature">
 							<p className="fs-1-25 fw-500 mb-0">{temperature.degrees}°</p>
 							<p className="fs-0-8 my-0">{temperature.city}</p>
 						</div>
