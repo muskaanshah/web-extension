@@ -21,6 +21,7 @@ function Weather() {
 	const [weatherModal, setWeatherModal] = useState(false);
 	const [loader, setLoader] = useState(true);
 	const [errorMsg, setErrorMsg] = useState("");
+	const [autoDetectToggle, setAutoDetectToggle] = useState(temp ? true : false);
 
 	const getAPI = (lat, lon) => {
 		let API = "";
@@ -68,8 +69,11 @@ function Weather() {
 	};
 	useEffect(() => {
 		getGeoLocation();
+		const temp = localStorage.getItem("Location");
+		setAutoDetectToggle(temp ? true : false);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cityValue]);
+
 	return (
 		<div className="weather-top-right">
 			<div className="weather-hover">
@@ -85,6 +89,7 @@ function Weather() {
 								localStorage.setItem("Location", cityValueInput);
 								setCityValue(() => cityValueInput);
 								setCityValueInput("");
+								setWeatherModal(false);
 							}
 						}}
 					/>
@@ -130,6 +135,18 @@ function Weather() {
 					</div>
 					<p className="fs-0-8 pl-0-5">Feels like: {temperature.feelsLike}°</p>
 					<p className="fs-0-8 pl-0-5">Humidity: {temperature.humidity}</p>
+					{autoDetectToggle && (
+						<p
+							className="fs-0-7 pl-0-5 my-0 text-underline text-right text-light"
+							onClick={() => {
+								localStorage.removeItem("Location");
+								setAutoDetectToggle((autoDetectToggle) => !autoDetectToggle);
+								setCityValue("");
+							}}
+						>
+							Auto detect location
+						</p>
+					)}
 				</div>
 			)}
 		</div>

@@ -63,3 +63,11 @@
 .maxmin > p {
 	font-size: 0.7rem;
 }
+
+.weather-modal .text-underline:hover {
+	cursor: pointer;
+}
+
+.text-right {
+	text-align: right;
+}
