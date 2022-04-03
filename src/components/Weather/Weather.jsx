@@ -16,19 +16,28 @@ function Weather() {
 		description: "",
 	});
 	const [cityValueInput, setCityValueInput] = useState("");
-	const [cityValue, setCityValue] = useState("");
+	const temp = localStorage.getItem("Location");
+	const [cityValue, setCityValue] = useState(temp || "");
 	const [weatherModal, setWeatherModal] = useState(false);
 	const [loader, setLoader] = useState(true);
 	const [errorMsg, setErrorMsg] = useState("");
 
-	const weatherAPI = async (lat, lon) => {
+	const getAPI = (lat, lon) => {
 		let API = "";
-		cityValue === null
-			? lat === undefined || lon === undefined
-				? (API = `https://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=${APIKEY}`)
-				: (API = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude={part}&appid=${APIKEY}`)
-			: (API = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}`);
-		setLoader(true);
+		console.log(cityValue);
+		if (cityValue === "") {
+			if (lat === undefined || lon === undefined)
+				API = `https://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=${APIKEY}`;
+			else
+				API = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude={part}&appid=${APIKEY}`;
+		} else
+			API = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}`;
+		return API;
+	};
+
+	const weatherAPI = async (lat, lon) => {
+		const API = getAPI(lat, lon);
+		console.log(API);
 		try {
 			const res = await axios.get(API);
 			setTemperature({
@@ -59,8 +68,6 @@ function Weather() {
 		navigator.geolocation.getCurrentPosition(success, error);
 	};
 	useEffect(() => {
-		const temp = localStorage.getItem("Location");
-		setCityValue(temp);
 		getGeoLocation();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cityValue]);
