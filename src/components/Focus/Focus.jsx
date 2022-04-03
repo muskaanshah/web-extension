@@ -68,8 +68,8 @@ function Focus({ state, dispatch }) {
 							transition: "opacity 1s ease-out",
 						}}
 					>
-						{/* {APPRECIATION_ARRAY[Math.floor(Math.random() * 4)]} */}
-						Great work!
+						{APPRECIATION_ARRAY[Math.floor(Math.random() * 4)]}
+						{/* Great work! */}
 					</p>
 				</>
 			) : (
