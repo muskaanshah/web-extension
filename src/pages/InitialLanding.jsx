@@ -19,6 +19,7 @@ function InitialLanding() {
 						}
 					}}
 					autoComplete="off"
+					autoFocus
 				/>
 				{name.length > 0 && (
 					<button
