@@ -53,7 +53,7 @@ function Landing() {
 	return (
 		<div className="landingimage overlay-wrapper">
 			<div className="overlay">
-				<TimeDisplay username={state.username} />
+				<TimeDisplay username={state.userName} />
 				<Focus state={state} dispatch={dispatch} />
 				<div className="settings-hover">
 					{state.settingsModal && (
