@@ -18,7 +18,6 @@ function Countdown() {
 	};
 	const eventFromLocalStorage = !localStorage.getItem("Event")
 		? {
-				id: uuid(),
 				description: "",
 				dateByUser: "",
 		  }
@@ -58,6 +57,13 @@ function Countdown() {
 			setDifference(`${diffInHours}h`);
 		} else if (diffInMinutes > 0) {
 			setDifference(`${diffInMinutes}m`);
+		} else if (diffInMinutes <= 0) {
+			localStorage.removeItem("Event");
+			setUserEvent({
+				description: "",
+				dateByUser: "",
+			});
+			setDifference("");
 		}
 	}, [userEvent.dateByUser, today]);
 
@@ -69,6 +75,7 @@ function Countdown() {
 			"Event",
 			JSON.stringify({
 				...userEvent,
+				id: uuid(),
 				description: descriptionHandler,
 				dateByUser: dateHandler,
 			})
