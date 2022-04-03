@@ -1,7 +1,6 @@
 import "./landingpage.css";
 import "./loader.css";
-import { useEffect, useReducer } from "react";
-import { reducerFunc } from "../reducers/landingPageReducer";
+import { useEffect, useState } from "react";
 import { Focus } from "../components/Focus/Focus";
 import { Weather } from "../components/Weather/Weather";
 import { GoogleSearch } from "../components/GoogleSearch/GoogleSearch";
@@ -10,37 +9,25 @@ import { Countdown } from "../components/countdown/Countdown";
 import { TimeDisplay } from "../components/TimeDisplay/TimeDisplay";
 import { TodoWrapper } from "../components/Todo/TodoWrapper";
 
-const initialState = {
-	userName: "",
-	focusFinal: "",
-	focus: "",
-	todoCompleted: false,
-	edit: false,
-	settingsModal: false,
-};
-
 function Landing() {
-	const [state, dispatch] = useReducer(reducerFunc, initialState);
+	const [settingsModal, setSettingsModal] = useState(false);
+	const [userName, setUserName] = useState("");
 	const changeNameHandler = () => {
 		localStorage.setItem("name", "");
-		dispatch({
-			type: "OPEN_SETTINGS_MODAL",
-		});
+		setSettingsModal((settingsModal) => !settingsModal);
 		window.location.reload(false);
 	};
 	useEffect(() => {
 		const user = localStorage.getItem("name");
-		dispatch({ type: "SET_USERNAME", payload: { value: user } });
-		const focus = localStorage.getItem("Focus");
-		dispatch({ type: "SET_FINAL_FOCUS", payload: { value: focus } });
+		setUserName(user);
 	}, []);
 	return (
 		<div className="landingimage overlay-wrapper">
 			<div className="overlay">
-				<TimeDisplay username={state.userName} />
-				<Focus state={state} dispatch={dispatch} />
+				<TimeDisplay username={userName} />
+				<Focus />
 				<div className="settings-hover">
-					{state.settingsModal && (
+					{settingsModal && (
 						<button
 							className="btn btn-change-name ml-0"
 							onClick={changeNameHandler}
@@ -50,11 +37,7 @@ function Landing() {
 					)}
 					<span
 						className="material-icons-outlined"
-						onClick={() =>
-							dispatch({
-								type: "OPEN_SETTINGS_MODAL",
-							})
-						}
+						onClick={() => setSettingsModal((settingsModal) => !settingsModal)}
 					>
 						settings
 					</span>

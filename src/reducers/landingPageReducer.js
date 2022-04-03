@@ -1,7 +1,5 @@
 const reducerFunc = (state, action) => {
     switch (action.type) {
-        case "SET_USERNAME":
-            return { ...state, userName: action.payload.value }
         case "SET_FOCUS":
             return { ...state, focus: action.payload.value }
         case "SET_FINAL_FOCUS":
@@ -13,8 +11,6 @@ const reducerFunc = (state, action) => {
         case "CLEAR_FOCUS":
             localStorage.removeItem("Focus");
             return { ...state, focus: "", focusFinal: "", todoCompleted: false, edit: false }
-        case "OPEN_SETTINGS_MODAL":
-            return { ...state, settingsModal: !state.settingsModal }
         default:
             return state
     }

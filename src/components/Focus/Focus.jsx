@@ -1,6 +1,15 @@
 import "./focus.css";
+import { useEffect, useReducer } from "react";
+import { reducerFunc } from "../../reducers/landingPageReducer";
 
-function Focus({ state, dispatch }) {
+function Focus() {
+	const initialState = {
+		focusFinal: "",
+		focus: "",
+		todoCompleted: false,
+		edit: false,
+	};
+	const [state, dispatch] = useReducer(reducerFunc, initialState);
 	const inputFocusHandler = () => {
 		const finalFocus = localStorage.getItem("Focus");
 		dispatch({ type: "SET_FINAL_FOCUS", payload: { value: finalFocus } });
@@ -21,6 +30,11 @@ function Focus({ state, dispatch }) {
 		"Way to go!",
 		"Good job!",
 	];
+
+	useEffect(() => {
+		const focus = localStorage.getItem("Focus");
+		dispatch({ type: "SET_FINAL_FOCUS", payload: { value: focus } });
+	}, []);
 	return (
 		<>
 			{state.focusFinal && !state.edit ? (
