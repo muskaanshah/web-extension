@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
-import { dateFormat } from "./dateFormat";
+import { dateFormat } from "../../utils/dateFormat";
 
 function CountdownModal({ userEvent, setUserEvent, today, setModalToggle }) {
 	const setEventHandler = (e) => {

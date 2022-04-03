@@ -87,6 +87,6 @@
 	border-radius: 50%;
 }
 
-.event-details > .text-left {
-	max-width: 130px;
+.event-details {
+	max-width: 150px;
 }

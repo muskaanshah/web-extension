@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import "./countdown.css";
 import { CountdownModal } from "./CountdownModal";
-import { dateFormat } from "./dateFormat";
+import { dateFormat } from "../../utils/dateFormat";
 
 function Countdown() {
 	const eventFromLocalStorage = !localStorage.getItem("Event")
@@ -16,8 +16,6 @@ function Countdown() {
 					new Date(JSON.parse(localStorage.getItem("Event")).dateByUser)
 				),
 		  };
-	console.log(eventFromLocalStorage);
-
 	const [userEvent, setUserEvent] = useState(eventFromLocalStorage);
 	let [difference, setDifference] = useState("");
 	const [today, setDate] = useState(new Date());

@@ -14,6 +14,13 @@ function Focus({ state, dispatch }) {
 			payload: { value: e.target.value },
 		});
 	};
+
+	const APPRECIATION_ARRAY = [
+		"Great work!",
+		"Nice!",
+		"Way to go!",
+		"Good job!",
+	];
 	return (
 		<>
 			{state.focusFinal && !state.edit ? (
@@ -61,6 +68,7 @@ function Focus({ state, dispatch }) {
 							transition: "opacity 1s ease-out",
 						}}
 					>
+						{/* {APPRECIATION_ARRAY[Math.floor(Math.random() * 4)]} */}
 						Great work!
 					</p>
 				</>
