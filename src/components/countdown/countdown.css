@@ -57,3 +57,31 @@
 	margin: 2px;
 	padding: 4px;
 }
+
+.event-details {
+	display: flex;
+	align-items: flex-start;
+}
+
+.event-details .material-icons-outlined {
+	font-size: 1rem;
+}
+
+.event-details:hover .btn-edit-event {
+	visibility: visible;
+}
+
+.btn-edit-event {
+	background-color: transparent;
+	color: inherit;
+	width: auto;
+	padding: 6px;
+	aspect-ratio: 1;
+	border: none;
+	visibility: hidden;
+}
+
+.btn-edit-event:hover {
+	background-color: rgba(0, 0, 0, 0.4);
+	border-radius: 50%;
+}

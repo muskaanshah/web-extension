@@ -59,10 +59,18 @@ function Countdown() {
 	return (
 		<div className="countdown">
 			{difference.length !== 0 ? (
-				<>
-					<p className="fs-1-25 fw-500 my-0">{difference}</p>
-					<p className="fs-0-8 my-0">{userEvent.description}</p>
-				</>
+				<div className="event-details">
+					<div>
+						<p className="fs-1-25 fw-500 my-0">{difference}</p>
+						<p className="fs-0-8 my-0">{userEvent.description}</p>
+					</div>
+					<button
+						className="btn btn-edit-event"
+						onClick={() => setModalToggle(true)}
+					>
+						<span className="material-icons-outlined">edit</span>
+					</button>
+				</div>
 			) : (
 				<div
 					className="centered flex-column add-countdown"
