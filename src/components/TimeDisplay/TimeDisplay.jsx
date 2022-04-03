@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 
-function TimeDisplay({ username }) {
+function TimeDisplay() {
+	const [userName, setUserName] = useState("");
+	useEffect(() => {
+		const user = localStorage.getItem("name");
+		setUserName(user);
+	}, []);
 	const [today, setDate] = useState(new Date());
 	const [is24HourFormat, setTo24HourFormat] = useState(true);
 	const hour = today.getHours();
@@ -60,7 +65,7 @@ function TimeDisplay({ username }) {
 				</button>
 			</div>
 			<p className="fw-600 nametag mt-0 mb-1">
-				{wish}, {username}
+				{wish}, {userName}
 			</p>
 		</>
 	);

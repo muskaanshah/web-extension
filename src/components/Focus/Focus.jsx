@@ -77,6 +77,7 @@ function Focus() {
 						</button>
 					</label>
 					<div
+						className="my-1"
 						style={{
 							opacity: `${state.todoCompleted ? "1" : "0"}`,
 							transition: "opacity 1s ease-in",
