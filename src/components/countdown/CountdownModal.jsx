@@ -2,12 +2,19 @@ import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { dateFormat } from "../../utils/dateFormat";
 
-function CountdownModal({ userEvent, setUserEvent, today, setModalToggle }) {
+function CountdownModal({
+	userEvent,
+	setUserEvent,
+	today,
+	setModalToggle,
+	setEventOverModal,
+}) {
 	const setEventHandler = (e) => {
 		e.preventDefault();
 		setUserEvent({ description: descriptionHandler, dateByUser: dateHandler });
 		setDescriptionHandler("");
 		setDateHandler("");
+		setEventOverModal(false);
 		localStorage.setItem(
 			"Event",
 			JSON.stringify({

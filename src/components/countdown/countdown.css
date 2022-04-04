@@ -90,3 +90,14 @@
 .event-details {
 	max-width: 150px;
 }
+
+.event-over-modal {
+	background-color: var(--black-lessopacity);
+	width: 400px;
+	border-radius: 0.5rem;
+	height: 100px;
+}
+
+.event-over-modal .material-icons-outlined {
+	font-size: 2rem;
+}

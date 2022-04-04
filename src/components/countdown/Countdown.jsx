@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./countdown.css";
 import { CountdownModal } from "./CountdownModal";
 import { dateFormat } from "../../utils/dateFormat";
+import { EventOverModal } from "./EventOverModal";
 
 const emptyEvent = {
 	description: "",
@@ -22,6 +23,7 @@ function Countdown() {
 	let [difference, setDifference] = useState("");
 	const [today, setDate] = useState(new Date());
 	const [modalToggle, setModalToggle] = useState(false);
+	const [eventOverModal, setEventOverModal] = useState(false);
 
 	useEffect(() => {
 		setInterval(() => {
@@ -44,9 +46,13 @@ function Countdown() {
 			setDifference(`${diffInDays}d`);
 		} else if (diffInHours >= 1) {
 			setDifference(`${diffInHours}h`);
-		} else if (diffInMinutes > 0) {
+		} else if (diffInMinutes > 1) {
 			setDifference(`${diffInMinutes}m`);
+		} else if (diffInMinutes === 1) {
+			setDifference(`${diffInMinutes}m`);
+			setEventOverModal(true);
 		} else if (diffInMinutes <= 0) {
+			setEventOverModal(false);
 			localStorage.removeItem("Event");
 			setUserEvent(emptyEvent);
 			setDifference("");
@@ -92,8 +98,10 @@ function Countdown() {
 					setUserEvent={setUserEvent}
 					today={today}
 					setModalToggle={setModalToggle}
+					setEventOverModal={setEventOverModal}
 				/>
 			)}
+			{eventOverModal && <EventOverModal eventName={userEvent.description} />}
 		</div>
 	);
 }
