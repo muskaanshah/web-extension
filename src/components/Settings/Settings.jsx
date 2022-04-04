@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
 function Settings() {
 	const [settingsModal, setSettingsModal] = useState(false);
@@ -7,10 +8,14 @@ function Settings() {
 		setSettingsModal((settingsModal) => !settingsModal);
 		window.location.reload(false);
 	};
+	const modalRef = { useRef };
+	const toggleRef = { useRef };
+	useOnClickOutside(modalRef, toggleRef, () => setSettingsModal(false));
 	return (
 		<div className="settings-hover">
 			{settingsModal && (
 				<button
+					ref={modalRef}
 					className="btn btn-change-name ml-0"
 					onClick={changeNameHandler}
 				>
@@ -18,6 +23,7 @@ function Settings() {
 				</button>
 			)}
 			<span
+				ref={toggleRef}
 				className="material-icons-outlined"
 				onClick={() => setSettingsModal((settingsModal) => !settingsModal)}
 			>

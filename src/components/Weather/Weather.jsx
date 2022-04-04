@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./weather.css";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
 const APIKEY = "40d6f448e392001b5598241621cd7b46";
 
@@ -74,6 +75,9 @@ function Weather() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cityValue]);
 
+	const modalRef = { useRef };
+	const toggleRef = { useRef };
+	useOnClickOutside(modalRef, toggleRef, () => setWeatherModal(false));
 	return (
 		<div className="weather-top-right">
 			<div className="weather-hover">
@@ -112,6 +116,7 @@ function Weather() {
 					<div className="mt-1">{errorMsg}</div>
 				) : (
 					<div
+						ref={toggleRef}
 						className="temperature-display"
 						onClick={() => setWeatherModal((weatherModal) => !weatherModal)}
 					>
@@ -128,7 +133,7 @@ function Weather() {
 				)}
 			</div>
 			{weatherModal && (
-				<div className="weather-modal">
+				<div className="weather-modal" ref={modalRef}>
 					<p className="mb-0-5 pl-0-5">{temperature.city}</p>
 					<p className="my-0 fs-0-9 text-light pl-0-5">
 						{temperature.description}
