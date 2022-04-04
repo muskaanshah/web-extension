@@ -93,6 +93,18 @@ function Weather() {
 							}
 						}}
 					/>
+					{autoDetectToggle && (
+						<span
+							className="material-icons-outlined"
+							onClick={() => {
+								localStorage.removeItem("Location");
+								setAutoDetectToggle((autoDetectToggle) => !autoDetectToggle);
+								setCityValue("");
+							}}
+						>
+							gps_fixed
+						</span>
+					)}
 				</label>
 				{loader ? (
 					<div className="loader mt-1">Loading...</div>
@@ -135,18 +147,6 @@ function Weather() {
 					</div>
 					<p className="fs-0-8 pl-0-5">Feels like: {temperature.feelsLike}°</p>
 					<p className="fs-0-8 pl-0-5">Humidity: {temperature.humidity}</p>
-					{autoDetectToggle && (
-						<p
-							className="fs-0-7 pl-0-5 my-0 text-underline text-right text-light"
-							onClick={() => {
-								localStorage.removeItem("Location");
-								setAutoDetectToggle((autoDetectToggle) => !autoDetectToggle);
-								setCityValue("");
-							}}
-						>
-							Auto detect location
-						</p>
-					)}
 				</div>
 			)}
 		</div>

@@ -64,10 +64,10 @@
 	font-size: 0.7rem;
 }
 
-.weather-modal .text-underline:hover {
+.city-input-label input + span:hover {
 	cursor: pointer;
 }
 
-.text-right {
-	text-align: right;
+.city-input-label input + span {
+	font-size: 1.25rem;
 }
