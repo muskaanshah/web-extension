@@ -11,7 +11,7 @@ function InitialLanding() {
 					type="text"
 					className="fw-500 input-text name-text"
 					value={name}
-					onChange={(e) => setName(e.target.value)}
+					onChange={(e) => setName(e.target.value.trim())}
 					onKeyPress={(e) => {
 						if (e.key === "Enter") {
 							localStorage.setItem("name", name);
