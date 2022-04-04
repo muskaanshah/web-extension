@@ -66,8 +66,8 @@ function Countdown() {
 		setDifference("");
 	};
 
-	const modalRef = { useRef };
-	const toggleRef = { useRef };
+	const modalRef = useRef();
+	const toggleRef = useRef();
 	useOnClickOutside(modalRef, toggleRef, () => setModalToggle(false));
 	return (
 		<div className="countdown">

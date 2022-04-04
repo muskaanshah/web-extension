@@ -8,8 +8,8 @@ function Settings() {
 		setSettingsModal((settingsModal) => !settingsModal);
 		window.location.reload(false);
 	};
-	const modalRef = { useRef };
-	const toggleRef = { useRef };
+	const modalRef = useRef();
+	const toggleRef = useRef();
 	useOnClickOutside(modalRef, toggleRef, () => setSettingsModal(false));
 	return (
 		<div className="settings-hover">

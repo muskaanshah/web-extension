@@ -75,8 +75,8 @@ function Weather() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cityValue]);
 
-	const modalRef = { useRef };
-	const toggleRef = { useRef };
+	const modalRef = useRef();
+	const toggleRef = useRef();
 	useOnClickOutside(modalRef, toggleRef, () => setWeatherModal(false));
 	return (
 		<div className="weather-top-right">
