@@ -61,7 +61,7 @@
 .event-details {
 	display: flex;
 	align-items: flex-start;
-	max-width: 130px;
+	max-width: 8rem;
 }
 
 .event-details .material-icons-outlined {
