@@ -61,6 +61,7 @@
 .event-details {
 	display: flex;
 	align-items: flex-start;
+	max-width: 130px;
 }
 
 .event-details .material-icons-outlined {
@@ -87,10 +88,6 @@
 	border-radius: 50%;
 }
 
-.event-details {
-	max-width: 150px;
-}
-
 .event-over-modal {
 	background-color: var(--black-lessopacity);
 	width: 400px;
@@ -100,4 +97,13 @@
 
 .event-over-modal .material-icons-outlined {
 	font-size: 2rem;
+}
+
+.event-details > div > div {
+	display: flex;
+	align-items: center;
+}
+
+.event-details > div > div > p {
+	flex-grow: 1;
 }

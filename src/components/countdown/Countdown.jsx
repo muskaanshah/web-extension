@@ -70,18 +70,23 @@ function Countdown() {
 			{difference.length !== 0 ? (
 				<div className="event-details">
 					<div className="text-left mr-0-5">
-						<p className="fs-1-25 fw-500 my-0">{difference}</p>
-						<p className="fs-0-8 my-0">{userEvent.description}</p>
+						<div>
+							<p className="fs-1-25 fw-500 my-0">{difference}</p>
+							<button
+								className="btn btn-edit-event"
+								onClick={() => setModalToggle(true)}
+							>
+								<span className="material-icons-outlined">edit</span>
+							</button>
+							<button
+								className="btn btn-edit-event"
+								onClick={removeEventHandler}
+							>
+								<span className="material-icons-outlined">close</span>
+							</button>
+						</div>
+						<p className="fs-0-8 my-0 mt-0-5">{userEvent.description}</p>
 					</div>
-					<button
-						className="btn btn-edit-event"
-						onClick={() => setModalToggle(true)}
-					>
-						<span className="material-icons-outlined">edit</span>
-					</button>
-					<button className="btn btn-edit-event" onClick={removeEventHandler}>
-						<span className="material-icons-outlined">close</span>
-					</button>
 				</div>
 			) : (
 				<div

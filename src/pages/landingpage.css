@@ -91,6 +91,7 @@ input:-webkit-autofill:active {
 	outline: none;
 	border: none;
 	width: 130px;
+	padding-bottom: 4px;
 	border-bottom: 1px solid var(--white);
 	font-size: 0.9rem;
 	color: var(--white);
@@ -99,7 +100,8 @@ input:-webkit-autofill:active {
 
 .searchform {
 	position: absolute;
-	top: 0;
+	top: 3px;
+	left: 10rem;
 	display: flex;
 	align-items: center;
 }
