@@ -25,9 +25,11 @@ function Todo({ state, dispatch }) {
 									<span className="material-icons-outlined">expand_more</span>
 								</button>
 							</div>
-							{state.todo.map((curTodo) => (
-								<TodoCheckbox dispatch={dispatch} curTodo={curTodo} />
-							))}
+							<div className="todo-scrollbar">
+								{state.todo.map((curTodo) => (
+									<TodoCheckbox dispatch={dispatch} curTodo={curTodo} />
+								))}
+							</div>
 							<TodoInput
 								state={state}
 								todoInputHandler={todoInputHandler}

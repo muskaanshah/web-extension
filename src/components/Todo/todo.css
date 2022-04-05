@@ -39,14 +39,20 @@
 }
 
 .todo-list {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	position: relative;
 	background-color: var(--black-lessopacity);
 	z-index: 5;
 	width: 300px;
 	border-radius: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: relative;
+}
+
+.todo-scrollbar {
+	width: 100%;
+	max-height: 60vh;
+	overflow: auto;
 }
 
 .todo-checkbox {
@@ -112,4 +118,19 @@
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
+}
+
+.todo-scrollbar::-webkit-scrollbar-track {
+	border-radius: 4px;
+	background-color: var(--white);
+}
+
+.todo-scrollbar::-webkit-scrollbar {
+	width: 0px;
+	background-color: var(--white);
+}
+
+.todo-scrollbar::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background-color: var(--primary);
 }
