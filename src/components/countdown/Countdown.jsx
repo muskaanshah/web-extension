@@ -1,10 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 import "./countdown.css";
 import { CountdownModal } from "./CountdownModal";
 import { dateFormat } from "../../utils/dateFormat";
 import { EventOverModal } from "./EventOverModal";
-import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
 const emptyEvent = {
 	description: "",
@@ -66,9 +65,6 @@ function Countdown() {
 		setDifference("");
 	};
 
-	const modalRef = useRef();
-	const toggleRef = useRef();
-	useOnClickOutside(modalRef, toggleRef, () => setModalToggle(false));
 	return (
 		<div className="countdown">
 			{difference.length !== 0 ? (
@@ -78,7 +74,6 @@ function Countdown() {
 						<p className="fs-0-8 my-0">{userEvent.description}</p>
 					</div>
 					<button
-						ref={toggleRef}
 						className="btn btn-edit-event"
 						onClick={() => setModalToggle(true)}
 					>
@@ -92,10 +87,9 @@ function Countdown() {
 				<div
 					className="centered flex-column add-countdown"
 					onClick={() => setModalToggle(true)}
-					ref={toggleRef}
 				>
 					<span className="material-icons-outlined">add_circle</span>
-					<span className="fs-0-7">Add countdown</span>
+					<span className="fs-0-7">Add event</span>
 				</div>
 			)}
 			{modalToggle && (
@@ -105,7 +99,6 @@ function Countdown() {
 					today={today}
 					setModalToggle={setModalToggle}
 					setEventOverModal={setEventOverModal}
-					modalRef={modalRef}
 				/>
 			)}
 			{eventOverModal && <EventOverModal eventName={userEvent.description} />}

@@ -8,7 +8,6 @@ function CountdownModal({
 	today,
 	setModalToggle,
 	setEventOverModal,
-	modalRef,
 }) {
 	const setEventHandler = (e) => {
 		e.preventDefault();
@@ -31,10 +30,7 @@ function CountdownModal({
 	const [descriptionHandler, setDescriptionHandler] = useState("");
 
 	return (
-		<div
-			className="flex-column centered countdown-modal py-1 mt-0-5"
-			ref={modalRef}
-		>
+		<div className="flex-column centered countdown-modal py-1 mt-0-5">
 			<button
 				className="btn-todo btn-close-countdownmodal mr-0-5"
 				onClick={() => setModalToggle(false)}
