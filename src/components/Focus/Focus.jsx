@@ -11,13 +11,19 @@ function Focus() {
 	};
 	const [state, dispatch] = useReducer(reducerFunc, initialState);
 	const inputFocusHandler = () => {
-		const finalFocus = localStorage.getItem("Focus");
+		const finalFocus = JSON.parse(localStorage.getItem("Focus"));
 		dispatch({ type: "SET_FINAL_FOCUS", payload: { value: finalFocus } });
 		dispatch({ type: "SET_EDIT", payload: { value: false } });
 	};
 
 	const onChangeHandler = (e) => {
-		localStorage.setItem("Focus", e.target.value);
+		localStorage.setItem(
+			"Focus",
+			JSON.stringify({
+				...JSON.parse(localStorage.getItem("Focus")),
+				focus: e.target.value,
+			})
+		);
 		dispatch({
 			type: "SET_FOCUS",
 			payload: { value: e.target.value },
@@ -32,7 +38,7 @@ function Focus() {
 	];
 
 	useEffect(() => {
-		const focus = localStorage.getItem("Focus");
+		const focus = JSON.parse(localStorage.getItem("Focus")) ?? {};
 		dispatch({ type: "SET_FINAL_FOCUS", payload: { value: focus } });
 	}, []);
 	return (
@@ -43,6 +49,7 @@ function Focus() {
 					<label className="label-focus">
 						<input
 							type="checkbox"
+							checked={JSON.parse(localStorage.getItem("Focus")).todoCompleted}
 							className="focus-checkbox"
 							onClick={() =>
 								dispatch({
@@ -94,7 +101,11 @@ function Focus() {
 					<input
 						type="text"
 						className="fw-500 name-text focus-text"
-						value={state.edit ? localStorage.getItem("Focus") : state.focus}
+						value={
+							state.edit
+								? JSON.parse(localStorage.getItem("Focus")).focus
+								: state.focus
+						}
 						onChange={(e) => onChangeHandler(e)}
 						onKeyPress={(e) => {
 							e.key === "Enter" && inputFocusHandler();
