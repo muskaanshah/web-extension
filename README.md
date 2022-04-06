@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Focussive
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Replace your boring new tab with a soothing wallpaper and other utilities like adding countdown, focus and todos for the day.
+- [Chrome Store](https://chrome.google.com/webstore/detail/focussive/iejpeddaadojpllmeckepjgjmnfpoapc)
+- [Firefox store](https://addons.mozilla.org/en-US/firefox/addon/focussive/)
+- [Live link](https://focussive.netlify.app/)
 
-## Available Scripts
+## Features -
+1. Greets you according to the time of the day.
+2. Auto-detects your location. User can manually give another location as well.
+3. Displays current time, city, temperature and weather in sync
+4. Add your main Focus of the day, you can edit and delete it. This gets deleted automatically when a new day starts so that user can update a new focus
+5. Add additional Todos for the day, you can complete and delete it. This gets deleted automatically when a new day starts so that user can update new Todos.
+6. Add a countdown for an event. Alert displayed when event is going to start
+7. Integrated Google search
+8. Wallpaper changes on every refresh
+9. Quote changes every day
 
-In the project directory, you can run:
+## Built with -
+- React JS
+- React useReducer
+- Vanilla CSS integrated with Rhythm UI
 
-### `npm start`
+## Live Demo -
+https://user-images.githubusercontent.com/67731665/162073488-e1168a95-b487-4da2-9a70-28af7dc134ae.mp4
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Learnings -
+- Saving and retrieving data from localStorage
+- Working with external APIs
+- useReducer hook in React
+- Publishing a web extension
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Resources -
+- [Google Icons](https://fonts.google.com/)
+- [Google Fonts](https://fonts.google.com/)
+- [Rhythm UI](https://ui-rhythm.netlify.app/)
+- [Open Weather API](https://openweathermap.org/api)
+- [Quote API](https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373)
+- [Unsplash Images](https://unsplash.com/)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Author -
+- [Github](https://github.com/muskaanshah)
+- [Twitter](https://twitter.com/Shahmuskaan19)
+- [LinkedIn](https://www.linkedin.com/in/muskaan-shah-a92643198/)
