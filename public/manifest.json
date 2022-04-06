@@ -1,8 +1,8 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Focussive",
-  "version": "1.3",
-  "description": "Replace your boring new tab with a soothing wallpaper and other utilities like adding focus and todos for the day. Also, this displays the time and weather in sync",
+  "version": "1.4",
+  "description": "Replace your boring new tab with a soothing wallpaper and other utilities like adding countdown, focus and todos for the day.",
   "chrome_url_overrides": {
 		"newtab": "index.html"
 	},
