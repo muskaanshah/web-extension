@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const changeQuoteHandler = (setQuote) => {
+	localStorage.removeItem("Quote");
+	setQuote({ text: "", author: "" });
+}
 function Quote() {
 	const [quote, setQuote] = useState({ text: "", author: "" });
+
 	useEffect(() => {
 		const random = Math.floor(Math.random() * 1643 - 1);
 		(async () => {
@@ -26,7 +31,7 @@ function Quote() {
 				console.error(err);
 			}
 		})();
-	}, []);
+	}, [quote]);
 	return (
 		<div className="quote-bottom-center">
 			<p className="mb-0-5">{`"${quote.text}"`}</p>
@@ -37,4 +42,4 @@ function Quote() {
 	);
 }
 
-export { Quote };
+export { Quote, changeQuoteHandler };

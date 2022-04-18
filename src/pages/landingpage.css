@@ -69,7 +69,7 @@
 .quote-bottom-center {
 	position: absolute;
 	bottom: 0;
-	max-width: 80%;
+	max-width: 75%;
 }
 
 .todo-bottom-right {
@@ -133,11 +133,9 @@ input:-webkit-autofill:active {
 }
 
 .btn-change-name {
-	background-color: var(--black-lessopacity);
 	color: inherit;
 	font: inherit;
 	font-size: 0.8rem;
-	border-radius: 0.5rem;
 }
 
 .btn-change-name:hover {
@@ -164,4 +162,12 @@ input:-webkit-autofill:active {
 
 .settings-hover > .material-icons-outlined:hover {
 	cursor: pointer;
+}
+
+.modal-settings {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--black-lessopacity);
+	align-items: center;
+	padding: 0.25rem 0;
 }
