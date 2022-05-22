@@ -1,7 +1,7 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Focussive",
-  "version": "1.4",
+  "version": "1.5",
   "description": "Replace your boring new tab with a soothing wallpaper and other utilities like adding countdown, focus and todos for the day.",
   "chrome_url_overrides": {
 		"newtab": "index.html"
