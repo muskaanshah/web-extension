@@ -8,22 +8,25 @@ import { Countdown } from "../components/countdown/Countdown";
 import { TimeDisplay } from "../components/TimeDisplay/TimeDisplay";
 import { TodoWrapper } from "../components/Todo/TodoWrapper";
 import { Settings } from "../components/Settings/Settings";
+import { useState } from "react";
 
 function Landing() {
-	return (
-		<div className="landingimage overlay-wrapper">
-			<div className="overlay">
-				<TimeDisplay />
-				<Focus />
-				<Settings />
-				<Weather />
-				<Countdown />
-				<Quote />
-				<TodoWrapper />
-				<GoogleSearch />
-			</div>
-		</div>
-	);
+    const [quote, setQuote] = useState({ text: "", author: "" });
+    const [updateQuote, setUpdateQuote] = useState(false);
+    return (
+        <div className="landingimage overlay-wrapper">
+            <div className="overlay">
+                <TimeDisplay />
+                <Focus />
+                <Settings setQuote={setQuote} setUpdateQuote={setUpdateQuote} />
+                <Weather />
+                <Countdown />
+                <Quote setQuote={setQuote} quote={quote} updateQuote={updateQuote} />
+                <TodoWrapper />
+                <GoogleSearch />
+            </div>
+        </div>
+    );
 }
 
 export { Landing };
