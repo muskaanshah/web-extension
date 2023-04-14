@@ -27,7 +27,9 @@
 }
 
 .city-input-label {
-	display: none;
+	display: flex;
+	height: 0;
+	opacity: 0;
 }
 
 .weather-hover {
@@ -37,7 +39,9 @@
 }
 
 .weather-hover:hover > .city-input-label {
-	display: flex;
+	opacity: 100%;
+	height: 24px;
+	transition: opacity 0.3s linear;
 }
 
 .weather-modal {

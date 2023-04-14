@@ -53,7 +53,7 @@ function TimeDisplay() {
 					{is24HourFormat ? time24 : time12}
 				</p>
 				<button
-					className="btn-focusaction btn-time-change"
+					className="btn-focusaction btn-time-change centered"
 					onClick={() => {
 						setTo24HourFormat((prev) => {
 							localStorage.setItem("Timeformat", !prev);

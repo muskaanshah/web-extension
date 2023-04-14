@@ -20,7 +20,7 @@ function TodoCheckbox({ dispatch, curTodo }) {
 				{curTodo.todoName}
 			</span>
 			<button
-				className="btn-todo mr-0-5"
+				className="btn-todo mr-0-5 centered"
 				onClick={() =>
 					dispatch({ type: "CLEAR_TODO", payload: { value: curTodo.id } })
 				}

@@ -65,7 +65,7 @@ function Focus() {
 							{state.focusFinal}
 						</span>
 						<button
-							className="btn-focusaction"
+							className="btn-focusaction centered"
 							onClick={() =>
 								dispatch({ type: "SET_EDIT", payload: { value: true } })
 							}
@@ -73,7 +73,7 @@ function Focus() {
 							<span className="material-icons-outlined smaller-icon">edit</span>
 						</button>
 						<button
-							className="btn-focusaction"
+							className="btn-focusaction centered"
 							onClick={() => dispatch({ type: "CLEAR_FOCUS" })}
 						>
 							<span className="material-icons-outlined">close</span>
