@@ -11,7 +11,7 @@ function TodoWrapper() {
 		todo: initialTodoList,
 		createTodo: false,
 		newTodoValue: "",
-		todoModal: false,
+		todoModal: initialTodoList.length > 0 ? true : false,
 	};
 	const [stateTodo, dispatchTodo] = useReducer(todoReducer, initialStateTodos);
 
