@@ -48,7 +48,7 @@ export function Settings({ setQuote, setUpdateQuote }) {
                     </span>
                     <div className="divider-black bg-grey-10 width-100" />
                     <div className="retain-todos-label pt-1">
-                        <p className="fs-0-9 my-0">Retain todos after 24 hours</p>
+                        <p className="fs-0-8 my-0">Retain todos after 24 hours</p>
                         <input
                             type="checkbox"
                             className="todo-checkbox"
