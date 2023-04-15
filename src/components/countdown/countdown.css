@@ -38,6 +38,7 @@
 	background-color: var(--black-lessopacity);
 	border-radius: 0.5rem;
 	position: relative;
+	z-index: 3;
 }
 
 .add-countdown .material-icons-outlined {
