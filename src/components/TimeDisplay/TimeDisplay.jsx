@@ -35,7 +35,7 @@ function TimeDisplay() {
             }
 			else {
 				const todos = JSON.parse(localStorage.getItem("Todos"));
-				const filteredTodos = todos.filter(x => x.todoCompleted == false);
+				const filteredTodos = todos.filter(x => x.todoCompleted === false);
 				localStorage.setItem("Todos", JSON.stringify(filteredTodos));
 			}
             localStorage.setItem("setupTime", day);

@@ -13,7 +13,7 @@ export function Settings({ setQuote, setUpdateQuote }) {
     const toggleRef = useRef();
     useOnClickOutside(modalRef, toggleRef, () => setSettingsModal(false));
     useEffect(() => {
-        if (localStorage.getItem("retain_todos") == null) {
+        if (localStorage.getItem("retain_todos") === null) {
             localStorage.setItem("retain_todos", false);
         }
         setIsRetainTodos(JSON.parse(localStorage.getItem("retain_todos")));
