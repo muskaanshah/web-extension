@@ -24,7 +24,7 @@ function TimeDisplay() {
     const time12 = `${hours}:${minutes}`;
     const setupTime = localStorage.getItem("setupTime");
     const retainTodos = JSON.parse(localStorage.getItem("retain_todos"));
-    if (setupTime == null) {
+    if (setupTime === null) {
         localStorage.setItem("setupTime", day);
     } else {
         if (day !== setupTime) {
