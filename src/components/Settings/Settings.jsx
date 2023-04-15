@@ -1,9 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { changeQuoteHandler } from "../Quote/Quote";
 
-function Settings({ setQuote, setUpdateQuote }) {
+export function Settings({ setQuote, setUpdateQuote }) {
     const [settingsModal, setSettingsModal] = useState(false);
+    const [isRetainTodos, setIsRetainTodos] = useState(false);
     const changeNameHandler = () => {
         localStorage.setItem("name", "");
         window.location.reload(false);
@@ -11,31 +12,52 @@ function Settings({ setQuote, setUpdateQuote }) {
     const modalRef = useRef();
     const toggleRef = useRef();
     useOnClickOutside(modalRef, toggleRef, () => setSettingsModal(false));
+    useEffect(() => {
+        if (localStorage.getItem("retain_todos") === null) {
+            localStorage.setItem("retain_todos", false);
+        }
+        setIsRetainTodos(JSON.parse(localStorage.getItem("retain_todos")));
+    }, []);
+    const changeRetainTodosHander = (e) => {
+        localStorage.setItem("retain_todos", !isRetainTodos);
+        setIsRetainTodos((isRetainTodos) => !isRetainTodos);
+    };
     return (
         <div className="settings-hover">
             {settingsModal && (
                 <div
-                    className="ml-1 modal-settings borderradius-0-5"
+                    className="ml-1 modal-settings borderradius-0-5 p-1"
                     ref={modalRef}
-                    onClick={() => setSettingsModal(false)}
                 >
                     <span
-                        className="btn btn-change-name ml-0"
+                        className="btn btn-change-name ml-0 px-0 pt-0"
                         onClick={() => {
                             changeNameHandler();
                         }}
                     >
                         Change name
                     </span>
-                    <div className="divider-black bg-white"></div>
+                    <div className="divider-black bg-grey-10 width-100" />
                     <span
-                        className="btn btn-change-name ml-0"
+                        className="btn btn-change-name ml-0 px-0"
                         onClick={() => {
                             changeQuoteHandler(setQuote, setUpdateQuote);
                         }}
                     >
                         Change quote
                     </span>
+                    <div className="divider-black bg-grey-10 width-100" />
+                    <div className="retain-todos-label pt-1">
+                        <p className="fs-0-8 my-0">Retain todos after 24 hours</p>
+                        <input
+                            type="checkbox"
+                            className="todo-checkbox"
+                            checked={isRetainTodos}
+                            onClick={() => {
+                                changeRetainTodosHander();
+                            }}
+                        />
+                    </div>
                 </div>
             )}
             <span
@@ -48,5 +70,3 @@ function Settings({ setQuote, setUpdateQuote }) {
         </div>
     );
 }
-
-export { Settings };

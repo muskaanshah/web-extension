@@ -32,7 +32,7 @@ function CountdownModal({
 	return (
 		<div className="flex-column centered countdown-modal py-1 mt-0-5">
 			<button
-				className="btn-todo btn-close-countdownmodal mr-0-5"
+				className="btn-todo btn-close-countdownmodal mr-0-5 centered"
 				onClick={() => setModalToggle(false)}
 			>
 				<span className="material-icons-outlined">close</span>
