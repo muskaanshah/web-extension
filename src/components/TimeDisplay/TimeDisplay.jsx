@@ -30,7 +30,7 @@ function TimeDisplay() {
         if (day !== setupTime) {
             localStorage.removeItem("Focus");
             localStorage.removeItem("Quote");
-            if (retainTodos == false) {
+            if (retainTodos === false) {
                 localStorage.removeItem("Todos");
             }
 			else {
