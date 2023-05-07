@@ -12,28 +12,23 @@ import { useState } from "react";
 import { Notes } from "../components/Notes/Notes";
 
 function Landing() {
-    const [quote, setQuote] = useState({ text: "", author: "" });
-    const [updateQuote, setUpdateQuote] = useState(false);
-    const [notesModal, setNotesModal] = useState(false);
-    return (
-        <div className="landingimage overlay-wrapper">
-            <div className="overlay">
-                <TimeDisplay />
-                <Focus />
-                <Settings setQuote={setQuote} setUpdateQuote={setUpdateQuote} />
-                <Weather />
-                <Countdown setNotesModal={setNotesModal} />
-                <Quote
-                    setQuote={setQuote}
-                    quote={quote}
-                    updateQuote={updateQuote}
-                />
-                <TodoWrapper />
-                <GoogleSearch />
-                <Notes notesModal={notesModal} setNotesModal={setNotesModal} />
-            </div>
-        </div>
-    );
+	const [quote, setQuote] = useState({ text: "", author: "" });
+	const [updateQuote, setUpdateQuote] = useState(false);
+	return (
+		<div className="landingimage overlay-wrapper">
+			<div className="overlay">
+				<TimeDisplay />
+				<Focus />
+				<Settings setQuote={setQuote} setUpdateQuote={setUpdateQuote} />
+				<Weather />
+				<Countdown />
+				<Quote setQuote={setQuote} quote={quote} updateQuote={updateQuote} />
+				<TodoWrapper />
+				<GoogleSearch />
+				<Notes />
+			</div>
+		</div>
+	);
 }
 
 export { Landing };
