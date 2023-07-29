@@ -26,7 +26,7 @@
 	border-bottom: 1px solid var(--white);
 	font-size: 0.9rem;
 	color: var(--white);
-	font-family: "Spartan", sans-serif;
+	font-family: 'Spartan', sans-serif;
 }
 
 .desc-input::placeholder {
@@ -55,7 +55,6 @@
 	position: absolute;
 	top: 0;
 	right: 0;
-	margin: 2px;
 	padding: 4px;
 }
 

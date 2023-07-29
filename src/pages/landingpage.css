@@ -1,6 +1,6 @@
 .landingimage {
 	height: 100vh;
-	background: url("https://source.unsplash.com/random/?nature/1366×768");
+	background: url('https://source.unsplash.com/random/?nature/1366×768');
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -44,7 +44,7 @@
 	font-size: 2.5rem;
 	color: var(--white);
 	text-align: center;
-	font-family: "Spartan", sans-serif;
+	font-family: 'Spartan', sans-serif;
 }
 
 .focus-text {
@@ -95,7 +95,7 @@ input:-webkit-autofill:active {
 	border-bottom: 1px solid var(--white);
 	font-size: 0.9rem;
 	color: var(--white);
-	font-family: "Spartan", sans-serif;
+	font-family: 'Spartan', sans-serif;
 }
 
 .searchform {
@@ -151,11 +151,13 @@ input:-webkit-autofill:active {
 	left: 1rem;
 }
 
-.btn-time-change {
+.btn-time-change,
+.btn-mantras-skip {
 	opacity: 0;
 }
 
-.time-hover:hover > .btn-time-change {
+.time-hover:hover > .btn-time-change,
+.mantras-hover:hover > .btn-mantras-skip {
 	opacity: 1;
 	transition: opacity 0.2s ease-in;
 }
