@@ -15,7 +15,6 @@ function Quote({ setQuote, quote, updateQuote }) {
 					const res = await axios.get(
 						'https://api.quotable.io/random'
 					);
-					console.log({ res });
 					setQuote({
 						text: res.data.content,
 						author: res.data.author,
