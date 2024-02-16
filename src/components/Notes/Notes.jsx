@@ -54,6 +54,7 @@ export function Notes() {
 						placeholder='Add a title'
 						className='notes-title-input pb-0-5 mr-1'
 						value={notes.title}
+						autoFocus
 						onChange={(e) => {
 							localStorage.setItem(
 								'notes_content',
