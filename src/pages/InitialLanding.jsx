@@ -1,13 +1,14 @@
 import { getImage } from '../utils/get-image';
 import './landingpage.css';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 function InitialLanding() {
 	const [name, setName] = useState('');
+	const img = useMemo(() => getImage().url, []);
 	return (
 		<div
 			className='landingimage overlay-wrapper'
-			style={{ backgroundImage: `url('${getImage().url}')` }}
+			style={{ backgroundImage: `url('${img}')` }}
 		>
 			<div className='overlay'>
 				<p className='fw-600 nametag mb-1-25'>

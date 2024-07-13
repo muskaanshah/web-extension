@@ -8,7 +8,7 @@ import { Countdown } from '../components/countdown/Countdown';
 import { TimeDisplay } from '../components/TimeDisplay/TimeDisplay';
 import { TodoWrapper } from '../components/Todo/TodoWrapper';
 import { Settings } from '../components/Settings/Settings';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Notes } from '../components/Notes/Notes';
 import { mantrasArr } from '../data/mantras';
 import { getImage } from '../utils/get-image';
@@ -34,6 +34,7 @@ function Landing() {
 					skipped: [],
 			  }
 	);
+	const img = useMemo(() => getImage().url, []);
 
 	useEffect(() => {
 		localStorage.setItem('mantras', JSON.stringify(showMantras));
@@ -41,7 +42,7 @@ function Landing() {
 	return (
 		<div
 			className='landingimage overlay-wrapper'
-			style={{ backgroundImage: `url('${getImage().url}')` }}
+			style={{ backgroundImage: `url('${img}')` }}
 		>
 			<div className='overlay'>
 				<TimeDisplay
