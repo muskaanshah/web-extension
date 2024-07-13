@@ -1,31 +1,38 @@
-import "./landingpage.css";
-import { useState } from "react";
+import { getImage } from '../utils/get-image';
+import './landingpage.css';
+import { useEffect, useMemo, useState } from 'react';
 
 function InitialLanding() {
-	const [name, setName] = useState("");
+	const [name, setName] = useState('');
+	const img = useMemo(() => getImage().url, []);
 	return (
-		<div className="landingimage overlay-wrapper">
-			<div className="overlay">
-				<p className="fw-600 nametag mb-1-25">Hello, what's your name?</p>
+		<div
+			className='landingimage overlay-wrapper'
+			style={{ backgroundImage: `url('${img}')` }}
+		>
+			<div className='overlay'>
+				<p className='fw-600 nametag mb-1-25'>
+					Hello, what's your name?
+				</p>
 				<input
-					type="text"
-					className="fw-500 input-text name-text"
+					type='text'
+					className='fw-500 input-text name-text'
 					value={name}
 					onChange={(e) => setName(e.target.value.trim())}
 					onKeyPress={(e) => {
-						if (e.key === "Enter") {
-							localStorage.setItem("name", name);
+						if (e.key === 'Enter') {
+							localStorage.setItem('name', name);
 							window.location.reload(false);
 						}
 					}}
-					autoComplete="off"
+					autoComplete='off'
 					autoFocus
 				/>
 				{name.length > 0 && (
 					<button
-						className="btn bg-white borderradius-2"
+						className='btn bg-white borderradius-2'
 						onClick={() => {
-							localStorage.setItem("name", name);
+							localStorage.setItem('name', name);
 							window.location.reload(false);
 						}}
 					>
