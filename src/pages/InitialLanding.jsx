@@ -1,6 +1,6 @@
 import { getImage } from '../utils/get-image';
 import './landingpage.css';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 function InitialLanding() {
 	const [name, setName] = useState('');
