@@ -10,7 +10,6 @@ import { TodoWrapper } from '../components/Todo/TodoWrapper';
 import { Settings } from '../components/Settings/Settings';
 import { useEffect, useState } from 'react';
 import { Notes } from '../components/Notes/Notes';
-import { SpotifyLogin } from '../components/Spotify/spotify';
 import { mantrasArr } from '../data/mantras';
 import { getImage } from '../utils/get-image';
 
